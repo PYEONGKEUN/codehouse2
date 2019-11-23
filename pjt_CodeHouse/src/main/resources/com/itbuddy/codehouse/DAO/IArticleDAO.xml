@@ -3,7 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itbuddy.codehouse.DAO.IArticleDAO">
-	<select id="countryList" resultType="com.itbuddy.codehouse.DTO.Article">
-		select * from country
+	<select id="selectArticleListOrderByParmDesc" resultType="com.itbuddy.codehouse.DTO.Article">
+		SELECT *
+		FROM article
+		ORDER BY #{param}
+		LIMIT #{start},#{count}
 	</select>
 </mapper>
