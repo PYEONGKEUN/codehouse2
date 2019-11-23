@@ -6,7 +6,7 @@
 	<select id="selectArticleListOrderByParmDesc" resultType="com.itbuddy.codehouse.DTO.Article">
 		SELECT *
 		FROM article
-		ORDER BY #{param}
+
 		LIMIT #{start},#{count}
 	</select>
 	

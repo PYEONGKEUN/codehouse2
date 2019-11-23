@@ -2,9 +2,11 @@ package com.itbuddy.codehouse.DAO;
 
 import java.util.List;
 
+import com.itbuddy.codehouse.DTO.Article;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.itbuddy.codehouse.DTO.Article;
+
 
 
 public interface IArticleDAO {
