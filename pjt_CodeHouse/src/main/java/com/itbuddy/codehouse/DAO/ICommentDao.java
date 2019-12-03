@@ -6,9 +6,9 @@ import com.itbuddy.codehouse.DTO.Comment;
 
 import org.apache.ibatis.annotations.Param;
 
-public interface ICommentDao {
+public interface ICommentDAO {
 
-    public List<Comment> select(Comment member, @Param("order")String order, @Param("asc")Boolean asc);
+    public List<Comment> select(@Param("comment") Comment member, @Param("order")String order, @Param("asc")Boolean asc);
 
     
     public Comment insert(Comment member);

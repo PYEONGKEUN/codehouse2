@@ -12,7 +12,7 @@ public interface IMemberDAO {
 
    
    
-    public List<Member> select(Member member, @Param("order")String order, @Param("asc")Boolean asc);
+    public List<Member> select(@Param("member")Member member, @Param("order")String order, @Param("asc")Boolean asc);
 
     
     public Member insert(Member member);
