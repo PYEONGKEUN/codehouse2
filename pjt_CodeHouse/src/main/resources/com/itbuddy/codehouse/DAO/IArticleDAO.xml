@@ -6,7 +6,6 @@
 	<select id="selectArticleListOrderByParmDesc" resultType="com.itbuddy.codehouse.DTO.Article">
 		SELECT *
 		FROM article
-
 		LIMIT #{start},#{count}
 	</select>
 	
