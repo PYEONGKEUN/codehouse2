@@ -26,7 +26,7 @@ public class TopNavService implements ITopNavService{
         tempMember.setMem_id(input.getMem_id());
         tempMember.setMem_pw(input.getMem_pw());
 
-        if(memberDAO.select(tempMember).size() == 1){
+        if(memberDAO.select(tempMember,"mem_id",true).size() == 1){
             bResult = true;
             
         }

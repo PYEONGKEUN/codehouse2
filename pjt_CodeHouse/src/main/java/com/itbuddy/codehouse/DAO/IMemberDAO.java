@@ -4,16 +4,21 @@ import java.util.List;
 
 import com.itbuddy.codehouse.DTO.Member;
 
+import org.apache.ibatis.annotations.Param;
+
+
+
 public interface IMemberDAO {
 
-    //회원 가져오기
-    public List<Member> select(Member member);
+   
+   
+    public List<Member> select(Member member, @Param("order")String order, @Param("asc")Boolean asc);
 
-    //회원가입
+    
     public Member insert(Member member);
     
-    //mybatis의 trim을 사용한 udpate 문
-    public int update(Member member);
+    
+    public String update(Member member);
 
 
 
