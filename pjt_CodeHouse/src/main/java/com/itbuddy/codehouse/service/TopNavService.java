@@ -18,27 +18,22 @@ public class TopNavService implements ITopNavService{
      @Autowired
      private IMemberDAO memberDAO;
 
-     public boolean login(Member input){
-
-        boolean bResult = false;
-        Member tempMember = new Member();
-
-        tempMember.setMem_id(input.getMem_id());
-        tempMember.setMem_pw(input.getMem_pw());
-
-        if(memberDAO.select(tempMember,"mem_id",true).size() == 1){
-            bResult = true;
-            
-        }
-        logger.info("bResult : "+ bResult);
-        return bResult;
-     }
+    @Override
+    public boolean login(Member member) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
     @Override
     public boolean logout() {
         // TODO Auto-generated method stub
         return false;
     }
+
+     
+
+
+
 
     
 }

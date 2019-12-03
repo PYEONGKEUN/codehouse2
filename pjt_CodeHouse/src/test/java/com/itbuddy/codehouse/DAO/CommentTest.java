@@ -1,13 +1,10 @@
 package com.itbuddy.codehouse.DAO;
 
-import java.util.List;
-
-import com.itbuddy.codehouse.DTO.Article;
+import com.itbuddy.codehouse.DTO.Comment;
 import com.itbuddy.codehouse.config.DBConfig;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +12,20 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * ArticleDaoTest
+ * Art_fileTest
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes= {DBConfig.class})
-public class ArticleDaoTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ArticleDaoTest.class);
+@ContextConfiguration(classes={DBConfig.class})
+public class CommentTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CommentTest.class);
 
     @Autowired
-    private IArticleDAO ArticleDAO;
-    
+    private ICommentDAO commentDAO;
+
     @Test
     public void selectTest(){
+        Comment input = new Comment();
+        
 
     }
     @Test

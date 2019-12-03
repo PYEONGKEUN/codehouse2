@@ -4,15 +4,15 @@ import java.util.List;
 
 import com.itbuddy.codehouse.DTO.Comment;
 
-import org.apache.ibatis.annotations.Param;
+
 
 public interface ICommentDAO {
 
-    public List<Comment> select(@Param("comment") Comment member, @Param("order")String order, @Param("asc")Boolean asc);
+    public List<Comment> select(Comment comment);
 
     
-    public Comment insert(Comment member);
+    public Comment insert(Comment comment);
     
     
-    public String update(Comment member);
+    public Comment update(Comment comment);
 }

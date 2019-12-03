@@ -33,7 +33,7 @@ public class MemberDaoTest {
         input.setMem_id("billip");
         input.setMem_pw("1234");
         input.setMem_nickname("빌리빌리퐁");
-        List<Member> members = MemberDAO.select(input,"mem_id",true);
+        List<Member> members = MemberDAO.select(input);
 
         for(Member member : members){
             LOGGER.info(member.toString());
@@ -49,6 +49,17 @@ public class MemberDaoTest {
         input.setMem_pw("1234");
         input.setMem_nickname("빌리빌리퐁");
         MemberDAO.update(input);
+    }
+
+    @Test
+    public void insertTest(){
+        Member input = new Member();
+        input.setMem_id("skvudrms543222");
+        input.setMem_pw("1234");
+        input.setMem_nickname("빌리빌리퐁");
+        input.setMem_img("noImage");
+        input.setMem_email("email");       
+ 
     }
     
 }

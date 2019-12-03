@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itbuddy.codehouse.DAO.IArticleDAO">
-	<select id="selectArticleListOrderByParmDesc" resultType="com.itbuddy.codehouse.DTO.Article">
+	<select id="select" resultType="com.itbuddy.codehouse.DTO.Comment"
+		parameterType="com.itbuddy.codehouse.DTO.Article">
 		SELECT *
 		FROM article
-		LIMIT #{start},#{count}
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="art_no != null">AND art_no=#{art_no}</if>
+			<if test="art_title != null">AND art_title=#{art_title}</if>
+			<if test="art_content != null">AND art_content=#{art_content}</if>
+			<if test="art_create_time != null">AND art_create_time=#{art_create_time}</if>
+			<if test="art_modify_time != null">AND art_modify_time=#{art_modify_time}</if>
+			
+		</trim>
+
 	</select>
-	
+
+	<update id="update" parameterType="com.itbuddy.codehouse.DTO.Article">
+		UPDATE article
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="art_title != null">cmt_content=#{cmt_content},</if>
+			<if test="art_content != null">cmt_create_time=#{cmt_create_time},</if>
+			<if test="art_create_time != null">cmt_modify_time=#{cmt_modify_time},</if>
+			<if test="art_modify_time != null">mem_id=#{mem_id},</if>
+		</trim>
+		WHERE art_no=#{art_no}
+	</update>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.itbuddy.codehouse.DTO.Article">
+		INSERT INTO article(art_no, art_title, art_content, art_create_time, art_modify_time)
+		values(#{art_no},#{art_title},#{art_content},#{art_create_time},#{art_modify_time})
+	</insert>
+
 </mapper>
