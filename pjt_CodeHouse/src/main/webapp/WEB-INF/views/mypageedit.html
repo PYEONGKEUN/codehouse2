@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <title>codeshare</title>
@@ -35,13 +34,16 @@
 
         }
 
-        .input {
+        .mypage-main {
             background: white;
             padding: 30px;
-            border-radius: 6px;
+            border-radius: 5px;
 
         }
 
+        .hide {
+            display: none;
+        }
     </style>
 
 </head>
@@ -85,59 +87,52 @@
     <div class="container" style="margin-top: 100px;">
         <div class="row">
             <div class="col-lg">
-                
-
-                    <form class="input" role="form">
-                        <h3>회원가입</h3>
-                        <div class="form-group">
-                            <img id="userImage" src="../../resources/imgs/noUserImage.png" class="rounded" style="width: 150px;" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="inputId">아이디</label>
-                            <input type="text" class="form-control" id="inputId" placeholder="아이드를 입력해 주세요">
-                        </div>
+                <div class="mypage-main">
 
 
-                        <div class="form-group">
-                            <label for="inputNickName">닉네임</label>
-                            <input type="text" class="form-control" id="inputNickName" placeholder="닉네임을 입력해 주세요">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail">이메일</label>
-                            <input type="text" class="form-control" id="inputName" placeholder="이메일을 입력해 주세요">
-                        </div>
+                    <h3>내정보</h3>
+                    <div class="form-group">
+                        <img id="userImage" src="../../resources/imgs/noUserImage.png" class="rounded" style="width: 150px;" />
+                    </div>
 
-                        <div class="form-group">
-                            <label for="inputPassword">비밀번호</label>
-                            <input type="password" class="form-control" id="inputPassword" placeholder="비밀번호를 입력해주세요">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPasswordCheck">비밀번호 확인</label>
-                            <input type="password" class="form-control" id="inputPasswordCheck" placeholder="비밀번호 확인을 위해 다시한번 입력 해 주세요">
-                        </div>
+                    <div class="form-group">
+                        <label for="inputId">아이디</label>
+                        <input type="text" class="form-control" id="inputId" placeholder="아이드를 입력해 주세요">
+                    </div>
 
 
+                    <div class="form-group">
+                        <label for="inputNickName">닉네임</label>
+                        <input type="text" class="form-control" id="inputNickName" placeholder="닉네임을 입력해 주세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">이메일</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="이메일을 입력해 주세요">
+                    </div>
 
+                    <div class="form-group">
+                        <label for="inputPassword">비밀번호</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="비밀번호를 입력해주세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPasswordCheck">비밀번호 확인</label>
+                        <input type="password" class="form-control" id="inputPasswordCheck" placeholder="비밀번호 확인을 위해 다시한번 입력 해 주세요">
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary">
+                            정보 수정
+                        </button>
 
-                        <div class="form-group text-center">
-                            <button type="submit" id="join-submit" class="btn btn-primary">
-                                회원가입<i class="fa fa-check spaceLeft"></i>
-                            </button>
-                            <button type="submit" class="btn btn-warning">
-                                가입취소<i class="fa fa-times spaceLeft"></i>
-                            </button>
+                    </div>
 
-                        </div>
-                        <input style="visibility: hidden;" type="file" accept="image/*" multiple="false" class="form-control" id="inputImage">
-                    </form>
-                
+                    <input style="visibility: hidden;" type="file" accept="image/*" multiple="false" class="form-control" id="inputImage">
+
+                </div>
             </div>
         </div>
+
+
     </div>
-
-
-
     <script>
         //이미지 업로드 AJAX
         // 이미지 업로드가 session["mem_id"]에 종속됨 없으면 업로드 불가
@@ -169,9 +164,6 @@
                 document.getElementById('inputImage').click();
             });
         });
-
     </script>
 
-</body>
-
-</html>
+</body></html>
