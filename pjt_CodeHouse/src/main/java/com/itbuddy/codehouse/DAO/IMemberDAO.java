@@ -15,10 +15,10 @@ public interface IMemberDAO {
     public List<Member> select(Member member);
 
     
-    public Member insert(Member member);
+    public int insert(Member member);
     
     
-    public void update(Member member);
+    public int update(Member member);
 
 
 

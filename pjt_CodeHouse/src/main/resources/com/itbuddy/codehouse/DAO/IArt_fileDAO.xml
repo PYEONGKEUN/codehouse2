@@ -22,9 +22,9 @@
     WHERE art_fil_no=#{art_fil_no}
   </update>
 
-  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.itbuddy.codehouse.DTO.Art_file">
-    INSERT INTO art_file(art_fil_no, art_fil_url, art_no)
-    values(#{art_fil_no},#{art_fil_url},#{art_no})
+  <insert id="insert" useGeneratedKeys="true" keyProperty="art_fil_no" parameterType="com.itbuddy.codehouse.DTO.Art_file">
+    INSERT INTO art_file(art_fil_url, art_no)
+    values(#{art_fil_url},#{art_no})
   </insert>
 
 </mapper>

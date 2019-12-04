@@ -3,7 +3,7 @@ package com.itbuddy.codehouse.DTO;
 public class Art_file {
 	Integer art_fil_no;
 	String art_fil_url;
-	String art_no;
+	Integer art_no;
 	
 
 	public Integer getArt_fil_no() {
@@ -18,10 +18,10 @@ public class Art_file {
 	public void setArt_fil_url(String art_fil_url) {
 		this.art_fil_url = art_fil_url;
 	}
-	public String getArt_no() {
+	public Integer getArt_no() {
 		return art_no;
 	}
-	public void setArt_no(String art_no) {
+	public void setArt_no(Integer art_no) {
 		this.art_no = art_no;
 	}
 	@Override

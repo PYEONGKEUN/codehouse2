@@ -29,9 +29,9 @@
         WHERE cmt_no=#{cmt_no}
     </update>
 
-    <insert id="insert" useGeneratedKeys="true" keyProperty="cmt_no" parameterType="com.itbuddy.codehouse.DTO.Comment">
-        INSERT INTO comment(cmt_no, cmt_title, cmt_content, cmt_create_time, cmt_modify_time, mem_id)
-        values(#{cmt_no},#{cmt_title},#{cmt_content},#{cmt_create_time},#{cmt_modify_time},#{mem_id})
+    <insert id="insert"  useGeneratedKeys="true" keyProperty="cmt_no" keyColumn="cmt_no">
+        INSERT INTO comment(cmt_title, cmt_content, cmt_create_time, cmt_modify_time, mem_id)
+        values(#{cmt_title},#{cmt_content},#{cmt_create_time},#{cmt_modify_time},#{mem_id})
     </insert>
 
 </mapper>

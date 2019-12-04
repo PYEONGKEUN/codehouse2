@@ -12,8 +12,8 @@ public interface IArticleDAO {
 	public List<Article> select(Article article);
 
     
-    public Article insert(Article article);
+    public int insert(Article article);
     
     
-    public Article update(Article article);
+    public int update(Article article);
 }

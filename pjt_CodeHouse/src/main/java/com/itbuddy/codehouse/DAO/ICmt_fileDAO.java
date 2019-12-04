@@ -9,8 +9,8 @@ public interface ICmt_fileDAO {
     public List<Cmt_file> select(Cmt_file cmt_file);
 
     
-    public Cmt_file insert(Cmt_file cmt_file);
+    public int insert(Cmt_file cmt_file);
     
     
-    public Cmt_file update(Cmt_file cmt_file);
+    public int update(Cmt_file cmt_file);
 }

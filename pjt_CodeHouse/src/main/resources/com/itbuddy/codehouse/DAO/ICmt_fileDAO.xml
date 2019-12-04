@@ -18,12 +18,12 @@
       <if test="cmt_fil_url != null">cmt_fil_url=#{cmt_fil_url},</if>
       <if test="cmt_no != null">cmt_no=#{cmt_no},</if>
     </trim>
-    WHERE cmt_no=#{cmt_no}
+    WHERE cmt_fil_no=#{cmt_fil_no}
   </update>
 
-  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.itbuddy.codehouse.DTO.Cmt_file">
-    INSERT INTO cmt_file(cmt_fil_no, cmt_fil_url, cmt_no)
-    values(#{cmt_fil_no},#{cmt_fil_url},#{cmt_no})
+  <insert id="insert" useGeneratedKeys="true" keyProperty="cmt_fil_no" parameterType="com.itbuddy.codehouse.DTO.Cmt_file">
+    INSERT INTO cmt_file(cmt_fil_url, cmt_no)
+    values(#{cmt_fil_url},#{cmt_no})
   </insert>
 
 </mapper>

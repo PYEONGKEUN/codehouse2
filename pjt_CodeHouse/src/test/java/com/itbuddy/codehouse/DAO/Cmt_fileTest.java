@@ -1,5 +1,6 @@
 package com.itbuddy.codehouse.DAO;
 
+import com.itbuddy.codehouse.DTO.Art_file;
 import com.itbuddy.codehouse.config.DBConfig;
 
 import org.junit.Test;
@@ -23,6 +24,9 @@ public class Cmt_fileTest {
 
     @Test
     public void selectTest(){
+        Art_file input = new Art_file();
+        input.setArt_no("11");
+
 
     }
     @Test

@@ -27,9 +27,9 @@
 		WHERE art_no=#{art_no}
 	</update>
 
-	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.itbuddy.codehouse.DTO.Article">
-		INSERT INTO article(art_no, art_title, art_content, art_create_time, art_modify_time)
-		values(#{art_no},#{art_title},#{art_content},#{art_create_time},#{art_modify_time})
+	<insert id="insert" useGeneratedKeys="true" keyProperty="art_no" parameterType="com.itbuddy.codehouse.DTO.Article">
+		INSERT INTO article(art_title, art_content, art_create_time, art_modify_time)
+		values(#{art_title},#{art_content},#{art_create_time},#{art_modify_time})
 	</insert>
 
 </mapper>
