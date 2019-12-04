@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itbuddy.codehouse.DAO.IArticleDAO">
-	<select id="select" resultType="com.itbuddy.codehouse.DTO.Comment"
-		parameterType="com.itbuddy.codehouse.DTO.Article">
+	<select id="select" resultType="com.itbuddy.codehouse.DTO.Article">
 		SELECT *
 		FROM article
 		<trim prefix="WHERE" prefixOverrides="AND|OR">
@@ -11,7 +10,7 @@
 			<if test="art_content != null">AND art_content=#{art_content}</if>
 			<if test="art_create_time != null">AND art_create_time=#{art_create_time}</if>
 			<if test="art_modify_time != null">AND art_modify_time=#{art_modify_time}</if>
-			
+			<if test="mem_id != null">AND mem_id=#{mem_id}</if>
 		</trim>
 
 	</select>
@@ -22,14 +21,15 @@
 			<if test="art_title != null">cmt_content=#{cmt_content},</if>
 			<if test="art_content != null">cmt_create_time=#{cmt_create_time},</if>
 			<if test="art_create_time != null">cmt_modify_time=#{cmt_modify_time},</if>
-			<if test="art_modify_time != null">mem_id=#{mem_id},</if>
+			<if test="art_modify_time != null">art_modify_time=#{art_modify_time},</if>
+			<if test="mem_id != null">mem_id=#{mem_id},</if>
 		</trim>
 		WHERE art_no=#{art_no}
 	</update>
 
 	<insert id="insert" useGeneratedKeys="true" keyProperty="art_no" parameterType="com.itbuddy.codehouse.DTO.Article">
-		INSERT INTO article(art_title, art_content, art_create_time, art_modify_time)
-		values(#{art_title},#{art_content},#{art_create_time},#{art_modify_time})
+		INSERT INTO article(art_title, art_content, art_create_time, art_modify_time, mem_id)
+		values(#{art_title},#{art_content},#{art_create_time},#{art_modify_time},#{mem_id})
 	</insert>
 
 </mapper>

@@ -1,5 +1,8 @@
 package com.itbuddy.codehouse.DAO;
 
+import java.util.List;
+
+import com.itbuddy.codehouse.DTO.Art_file;
 import com.itbuddy.codehouse.config.DBConfig;
 
 import org.junit.Test;
@@ -23,14 +26,48 @@ public class Art_fileTest {
 
     @Test
     public void selectTest(){
+        Art_file input = new Art_file();
+        input.setArt_no(11);
+
+        List<Art_file> output = art_fileDAO.select(input);
+
+        for(Art_file art_file : output){
+            LOGGER.info(art_file.toString());
+        }
+
 
     }
     @Test
     public void updateTest(){
 
+
+        Art_file input = new Art_file();
+        input.setArt_no(11);
+        input.setArt_fil_url("./noImage");
+
+        List<Art_file> output = art_fileDAO.select(input);
+
+        for(Art_file art_file : output){
+            LOGGER.info(art_file.toString());
+        }
+
     }
     @Test
     public void insertTest(){
+
+        Art_file input = new Art_file();
+        input.setArt_no(11);
+        input.setArt_fil_url("./noImage");
+
+        int num = art_fileDAO.insert(input);       
+           
+        LOGGER.info("성공한 갯수 : " + num +" - "+input.toString());
+
+        List<Art_file> output = art_fileDAO.select(input);
+
+        for(Art_file art_file : output){
+            LOGGER.info(art_file.toString());
+        }
 
     }
     
