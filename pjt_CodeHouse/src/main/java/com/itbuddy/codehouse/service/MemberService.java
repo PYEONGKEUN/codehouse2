@@ -15,60 +15,75 @@ import org.springframework.stereotype.Service;
  * LoginService
  */
 @Service
-public class TopNavService implements ITopNavService{
-    private static final Logger logger = LoggerFactory.getLogger(TopNavService.class);
+public class MemberService implements IMemberService{
+	private static final Logger logger = LoggerFactory.getLogger(MemberService.class);
 
-     @Autowired
-     private IMemberDAO memberDAO;
+	@Autowired
+	private IMemberDAO memberDAO;
 
-    @Override
-    public boolean login(Member member, HttpSession session) {
-        // TODO Auto-generated method stub
-        
-        boolean result = false;
-        Member input = new Member();
+	@Override
+	public boolean login(Member member, HttpSession session) {
+		// TODO Auto-generated method stub
 
-
-        if(member.getMem_id() == null || member.getMem_pw() == null){
+		boolean result = false;
 
 
-        }else{
-            input.setMem_id(member.getMem_id());
-            input.setMem_pw(member.getMem_pw());
-            
-            List<Member> output =  memberDAO.select(input);
-            // 아이디와 비밀번호를 
-            if(output.size() > 0){
-                logger.info(input.getMem_id() +" logged in");
-                session.setAttribute("memberInfo", output);
-                result = true;
-            }
+		if(member.getMem_id() == null || member.getMem_pw() == null){
 
-        }
+		}else{
 
+			List<Member> output =  memberDAO.select(member);
+			// 아이디와 비밀번호를 
+			if(output.size() > 0){
+				logger.info(member.getMem_id() +" logged in");
+				session.setAttribute("memberInfo", output);
+				session.setAttribute("status", "login");
+				result = true;
+			}else {
+				logger.info(member.getMem_id() +"Password or Id is not correct");
+			}
 
-        return result;
-    }
-
-    @Override
-    public boolean logout(HttpSession session) {
-        // TODO Auto-generated method stub
-        boolean result = false;
-        //session.removeAttribute("memberInfo");
-        try{
-            session.invalidate();
-            result = true;
-        }catch (Exception e){
-            logger.info(e.toString());
-        }
-        
-        return result;
-    }
-
-     
+		}
 
 
+		return result;
+	}
+	//세션에서 로그인 정보를 삭제
+	@Override
+	public boolean logout(HttpSession session) {
+		// TODO Auto-generated method stub
+		boolean result = false;
+		//session.removeAttribute("memberInfo");
+		try{
+			session.invalidate();
+			result = true;
+		}catch (Exception e){
+			logger.info(e.toString());
+		}
+
+		return result;
+	}
+	// session에서 로그인 정보를 확인
+	@Override
+	public boolean isLogin(HttpSession session) {
+		// TODO Auto-generated method stub
+		boolean result = false;
+		// 세션에 멤버 정보가 있다면 로그인 상태
+		// 아니라면 로그아웃 상태
+		
+		if(session.getAttribute("memberInfo")!=null) {
+			return true;
+		}else {
+			return false;
+		}
 
 
-    
+	}
+
+
+
+
+
+
+
 }

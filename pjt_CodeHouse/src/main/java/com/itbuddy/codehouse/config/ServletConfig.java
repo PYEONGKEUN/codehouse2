@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.itbuddy.codehouse.controller" })
-@ComponentScan(basePackages = { "com.itbuddy.codehouse" })
+
 public class ServletConfig implements WebMvcConfigurer {
 	
 	@Override

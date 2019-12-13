@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>codeshare</title>
@@ -15,7 +16,7 @@
 
 
     <style>
-        /* html {
+        html {
             height: 100%;
             overflow: hidden;
         }
@@ -44,7 +45,7 @@
 
         .hide {
             display: none;
-        } */
+        }
     </style>
 
 </head>
@@ -89,95 +90,40 @@
         <div class="row">
             <div class="col-lg">
                 <div class="content">
-                    <div class="row">
-                        <div class="col">
-                            <h2 class="text-center">제목</h2>
+                    <form method="post" action="">
+                        <div class="row">
+                            <div class="col">
+                                <input class="form-control form-control-lg" type="text" placeholder="제목">
+                            </div>
                         </div>
-                    </div>
-                    <hr />
-                    <div class="row justify-content-end">
-                        <div class="col-3">
-                            <p>날짜</p>
+                        <hr />
+                        <div class="row">
+                            <div class="col">
+                                <textarea id="summernote" name="editordata"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row justify-content-end">
-                        <div class="col-3">
-                            <p>글쓴이</p>
+                        <hr/>                        
+                        <div class="row">
+                            <div class="col text-center">
+                                <input type="submit" class="btn btn-primary"/>
+                            </div>
                         </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col"></div>
-
-                    </div>
-                </div>
-
-
-
-
-
-            </div>
-        </div>
-
-    </div>
-    &nbsp;
-    <div class="container">
-        <div class="content">
-            <div class="row">
-                <div class="col">
-                    <h4 class="text-center">댓글
-                        
-                    </h4>
-                </div>
-            </div>
-            <hr />
-            <div class="row">
-                <div class="col">
-                    <p>정말 잘하셨어요</p>
-                    <p>좋아요</p>
-                    <p><br></p>
-                </div>
-
-            </div>
-            <hr />
-
-            <div class="row">
-                <div class="col-10">
-                    <form>
-                        <textarea id="summernote" name="editordata"></textarea>
                     </form>
                 </div>
-                <div class="col-1 text-center">
-                    <button class="btn btn-primary">등록</button>
-                </div>
             </div>
         </div>
+
     </div>
 
     <script>
         $(document).ready(function() {
-
-            var hintArr = ['해시태그', 'sam', 'alvin', 'david'];
             $('#summernote').summernote({
                 placeholder: '내용을 입력하세요.',
                 tabsize: 2,
-                height: 100,
-                hint: {
-                    mentions: hintArr,
-                    match: /\B#(\w*)$/,
-                    search: function(keyword, callback) {
-                        callback($.grep(this.mentions, function(item) {
-                            return item.indexOf(keyword) == 0;
-                        }));
-                    },
-                    content: function(item) {
-                        return '#' + item;
-                    }
-                }
+                height: 450
             });
 
         });
     </script>
-
 
 </body></html>

@@ -1,8 +1,8 @@
 package com.itbuddy.codehouse.Service;
 
 import com.itbuddy.codehouse.DTO.Member;
-import com.itbuddy.codehouse.config.DBConfig;
-import com.itbuddy.codehouse.service.ITopNavService;
+import com.itbuddy.codehouse.config.RootConfig;
+import com.itbuddy.codehouse.service.IMemberService;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,12 +19,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes= {DBConfig.class})
+@ContextConfiguration(classes= {RootConfig.class})
 public class TopNavServiceTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(TopNavServiceTest.class);
 
     @Autowired
-    private ITopNavService TopNavService;
+    private IMemberService TopNavService;
 
     
     @Test

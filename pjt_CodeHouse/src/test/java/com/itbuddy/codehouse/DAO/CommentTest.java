@@ -3,7 +3,7 @@ package com.itbuddy.codehouse.DAO;
 import java.util.List;
 
 import com.itbuddy.codehouse.DTO.Comment;
-import com.itbuddy.codehouse.config.DBConfig;
+import com.itbuddy.codehouse.config.RootConfig;
 import com.itbuddy.codehouse.util.TimeLib;
 
 import org.junit.Test;
@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Art_fileTest
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes={DBConfig.class})
+@ContextConfiguration(classes={RootConfig.class})
 public class CommentTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(CommentTest.class);
 
