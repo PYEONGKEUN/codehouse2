@@ -79,6 +79,23 @@ public class MemberService implements IMemberService{
 
 
 	}
+	//회원이 존재하는지?
+	@Override
+	public boolean isExist(Member member) {
+		// TODO Auto-generated method stub
+		boolean result = false;
+		//해당 아이디가 존재하는지 확인
+		List<Member> output =  memberDAO.select(member);
+		
+		if(output.size() == 0) {
+			result = false;
+		}else {
+			result = true;
+		}		
+		
+		return result;
+	}
+	
 
 
 
