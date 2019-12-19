@@ -79,6 +79,24 @@ public class MemberService implements IMemberService{
 
 
 	}
+	@Override
+	public boolean idIsExist(Member member) {
+		// TODO Auto-generated method stub
+
+		
+		List<Member> output = memberDAO.select(member);
+		
+		
+		if(output.size() > 0) {
+			return true;
+		}else {
+			return false;
+		}
+					
+		
+	}
+	
+	
 
 
 
