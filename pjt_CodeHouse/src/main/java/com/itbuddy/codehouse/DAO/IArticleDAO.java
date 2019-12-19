@@ -17,7 +17,7 @@ public interface IArticleDAO {
 	
 	public List<Article> select_start_count_sortParm( @Param("start") int start,
 			@Param("count") int count,
-			@Param("sortParam") String sortParam);
+			@Nullable @Param("sortParam") String sortParam);
 	
 	public int selectArticlesCount();
     

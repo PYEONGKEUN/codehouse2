@@ -50,10 +50,10 @@ body {
 					<tbody>
 						<c:forEach items="${articles}" var="article">
 							<tr>
-								<th scope="row">article.getArt_no</th>
-								<td>article.getArt_title</td>
-								<td>article.getArt_create_time</td>
-								<td>article.getMem_id</td>
+								<th scope="row">article.art_no</th>
+								<td>article.art_title</td>
+								<td>article.art_create_time</td>
+								<td>article.mem_id</td>
 							</tr>
 
 						</c:forEach>
