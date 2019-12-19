@@ -14,6 +14,14 @@
 		</trim>
 
 	</select>
+	
+	
+	<select id="select_orderByParm_start_count" resultType="com.itbuddy.codehouse.DTO.Article">	
+		SELECT *
+		FROM article
+		ORDER BY #{param}
+		LIMIT #{start},#{count}		
+	</select>
 
 	<update id="update" parameterType="com.itbuddy.codehouse.DTO.Article">
 		UPDATE article
