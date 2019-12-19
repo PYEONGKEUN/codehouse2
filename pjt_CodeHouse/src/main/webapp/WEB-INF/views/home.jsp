@@ -61,7 +61,7 @@ article::before{
     right: 0;
     top: 0;
     display: block;
-    background-image: url(./imgs/3394.jpg);
+    background-image: url(./resources/imgs/3394.jpg);
     background-size: cover;
     transform-origin: center center 0;
     transform: translateZ(-1px) scale(2);
@@ -85,7 +85,7 @@ font-size: 30px;
 
 </head>
 <body>
-<jsp:include page="/common/topnav"></jsp:include>
+<jsp:include page="./common/topnav"></jsp:include>
 
  <div class="container" style="text-align: center; display: inline-block;">
 
