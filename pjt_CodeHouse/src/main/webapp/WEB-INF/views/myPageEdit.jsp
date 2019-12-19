@@ -51,7 +51,7 @@
 </head>
 
 <body>
-    <jsp:include page="./common/topnav"></jsp:include>
+    <jsp:include page="/common/topnav"></jsp:include>
 
 
 

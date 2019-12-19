@@ -85,7 +85,7 @@ font-size: 30px;
 
 </head>
 <body>
-<jsp:include page="./common/topnav"></jsp:include>
+<jsp:include page="/common/topnav"></jsp:include>
 
  <div class="container" style="text-align: center; display: inline-block;">
 

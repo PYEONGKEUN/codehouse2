@@ -14,7 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.itbuddy.codehouse.DTO.Member;
 import com.itbuddy.codehouse.service.IMemberService;
+import com.itbuddy.codehouse.service.IMyPageService;
 
 /**
  * Handles requests for the application home page.
@@ -25,7 +27,10 @@ public class MypageController {
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
 	
 	@Autowired
-	private IMemberService memberService;	
+	private IMemberService memberService;
+	
+	@Autowired
+	private IMyPageService myPageService;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -34,15 +39,19 @@ public class MypageController {
 	public String mypage(Locale locale, Model model, HttpSession session) {
 		logger.info("Welcome board", locale);
 		
-
+		
+		
 		if(memberService.isLogin(session)) {
+			Member member = (Member)myPageService.getMyInfo(session);
+			if(member.getMem_img() == "") {
+				member.setMem_img("/resurces/img/noImage");
+			}
+			
+			model.addAttribute("member", member);
 			
 			return "myPage";
 		}else {
 			return "redirect:./";
 		}
-			
-		
 	}
-	
 }

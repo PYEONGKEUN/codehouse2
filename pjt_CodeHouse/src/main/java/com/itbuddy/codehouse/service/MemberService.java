@@ -36,7 +36,7 @@ public class MemberService implements IMemberService{
 			// 아이디와 비밀번호를 
 			if(output.size() > 0){
 				logger.info(member.getMem_id() +" logged in");
-				session.setAttribute("memberInfo", output);
+				session.setAttribute("memberInfo", output.get(0));
 				session.setAttribute("status", "login");
 				result = true;
 			}else {
