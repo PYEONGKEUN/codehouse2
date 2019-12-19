@@ -26,54 +26,59 @@ public class ArticleDaoTest {
     @Autowired
     private IArticleDAO articleDAO;
     
+//    @Test
+//    public void selectTest(){
+//        Article input = new Article();
+//        input.setArt_content("테스트");
+//        List<Article> output = articleDAO.select(input);
+//
+//
+//        for(Article comment : output){
+//            LOGGER.info(comment.toString());
+//        }
+//    }
+    
     @Test
-    public void selectTest(){
-        Article input = new Article();
-        input.setArt_content("테스트");
-        List<Article> output = articleDAO.select(input);
-
-
-        for(Article comment : output){
-            LOGGER.info(comment.toString());
-        }
+    public void selectArticlesCountTest() {
+    	int result = articleDAO.selectArticlesCount();
+    	LOGGER.info(result + "");
     }
 
-    @Test
-    public void updateTest(){
-        Article input = new Article();
-        input.setArt_no(3);
-        input.setArt_modify_time(TimeLib.getCurrDateTime());
-
-        articleDAO.update(input);
-        List<Article> output = articleDAO.select(input);
-
-
-        for(Article comment : output){
-            LOGGER.info(comment.toString());
-        }
-
-
-        
-    }
-
-    @Test
-    public void insertTest(){
-
-        Article input = new Article();
-        
-        
-        input.setArt_title("테스트");
-        input.setArt_content("테스트"); 
-        input.setArt_create_time(TimeLib.getCurrDateTime());
-        input.setArt_modify_time(TimeLib.getCurrDateTime());
-        input.setMem_id("skvudrms54");
-
-        int num = articleDAO.insert(input);       
-           
-        LOGGER.info("성공한 갯수 : " + num +" - "+input.toString());
-
-
-        
-    }
+//    @Test
+//    public void updateTest(){
+//        Article input = new Article();
+//        input.setArt_no(3);
+//        input.setArt_modify_time(TimeLib.getCurrDateTime());
+//
+//        articleDAO.update(input);
+//        List<Article> output = articleDAO.select(input);
+//
+//
+//        for(Article comment : output){
+//            LOGGER.info(comment.toString());
+//        }
+//
+//
+//    }
+//
+//    @Test
+//    public void insertTest(){
+//
+//        Article input = new Article();
+//        
+//        
+//        input.setArt_title("테스트");
+//        input.setArt_content("테스트"); 
+//        input.setArt_create_time(TimeLib.getCurrDateTime());
+//        input.setArt_modify_time(TimeLib.getCurrDateTime());
+//        input.setMem_id("skvudrms54");
+//
+//        int num = articleDAO.insert(input);       
+//           
+//        LOGGER.info("성공한 갯수 : " + num +" - "+input.toString());
+//
+//
+//        
+//    }
     
 }

@@ -18,10 +18,10 @@ public interface IArticleDAO {
 	public List<Article> select(HashMap<String, String> hashMap);
 	
 	public List<Article> select_start_count_sortParm(@Nullable @Param("sortParam") String sortParam, @Param("start") int start, @Param("count") int count);
-
+	
+	public int selectArticlesCount();
     
     public int insert(Article article);
-    
     
     public int update(Article article);
     
