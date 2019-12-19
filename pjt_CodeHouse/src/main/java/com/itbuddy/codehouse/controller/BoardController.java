@@ -39,8 +39,8 @@ public class BoardController {
 		
 		final int PAGE_SIZE = 10;
 		
-		HashMap<String, String>
-		 articleTotalCnt = boardService.select();
+		int articleTotalCnt = boardService.getArticlesCount(); // 전체 article 개수 구해오는 부분
+		
 		//1페이지 일 경우 start의 값은 0
 		int start = 0;		
 		if(httpServletRequest.getAttribute("page") != null) {
@@ -64,5 +64,5 @@ public class BoardController {
 		
 		return "board";
 	}
-	
+
 }
