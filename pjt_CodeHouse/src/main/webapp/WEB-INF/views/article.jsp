@@ -115,7 +115,7 @@
             <div class="row">
                 <div class="col-10">
                     <form>
-                        <textarea id="summernote" name="editordata"></textarea>
+                        <textarea id="summernote" name="editcomment"></textarea>
                     </form>
                 </div>
                 <div class="col-1 text-center">
