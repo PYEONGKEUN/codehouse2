@@ -32,7 +32,7 @@ body {
 </head>
 
 <body>
-	<jsp:include page="./common/topnav"></jsp:include>
+	<jsp:include page="/common/topnav"></jsp:include>
 	<div class="container" style="margin-top: 100px;">
 
 		<div class="row">

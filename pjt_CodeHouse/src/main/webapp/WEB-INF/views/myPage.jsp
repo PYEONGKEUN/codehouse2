@@ -1,5 +1,7 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,46 +53,37 @@
 </head>
 
 <body>
-<jsp:include page="./common/topnav"></jsp:include>
+<jsp:include page="/common/topnav"></jsp:include>
+
 
 
     <div class="container" style="margin-top: 100px;">
         <div class="row">
             <div class="col-lg">
                 <div class="mypage-main">
-
-                    
+                
                     <h3 style="">내정보</h3> 
                     <div class="form-group">
-                        <img id="userImage" src="./resources/imgs/noUserImage.png" class="rounded" style="width: 150px;" />
-                        
+                    	<img id="userImage" src="${member.mem_img}.png" class="rounded" style="width: 150px;"/>
                     </div>
                     <div class="btn btn-primary">
-                       	
-                       	
                        	 정보 수정
                     </div>
 
                     <div class="form-group">
                         <label for="inputId">아이디</label>
-                        <input type="text" class="form-control" readonly />
+                        <input type="text" class="form-control" value="${member.mem_id}" readonly />
                     </div>
 
 
                     <div class="form-group">
                         <label for="inputNickName">닉네임</label>
-                        <input type="text" class="form-control" readonly />
+                        <input type="text" class="form-control" value="${member.mem_nickname}" readonly />
                     </div>
                     <div class="form-group">
                         <label for="inputEmail">이메일</label>
-                        <input type="text" class="form-control" readonly />
+                        <input type="text" class="form-control" value="${model.mem_email}" readonly />
                     </div>
-
-
-
-
-
-
 
                     <input style="visibility: hidden;" type="file" accept="image/*" multiple="false" class="form-control" id="inputImage">
 
