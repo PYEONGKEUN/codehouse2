@@ -1,8 +1,6 @@
 package com.itbuddy.codehouse.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.HashMap;
+
 import java.util.List;
 import java.util.Locale;
 
@@ -16,20 +14,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 import com.itbuddy.codehouse.DTO.Article;
 import com.itbuddy.codehouse.service.IBoardService;
-import com.itbuddy.codehouse.util.CheckString;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class BoardController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	@Autowired
 	private IBoardService boardService;
 	
+	@Autowired
+	private IBoardService boardService;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */

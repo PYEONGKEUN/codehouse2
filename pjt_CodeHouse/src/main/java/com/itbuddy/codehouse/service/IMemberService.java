@@ -10,5 +10,5 @@ public interface IMemberService {
     public boolean login(Member member, HttpSession session);
     public boolean logout(HttpSession session);
     public boolean isLogin(HttpSession session);
-    public boolean isExist(Member member);
+    public boolean idIsExist(Member member);
 }

@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-import org.springframework.lang.Nullable;
 
 import com.itbuddy.codehouse.DTO.Article;
 
@@ -14,6 +13,11 @@ import com.itbuddy.codehouse.DTO.Article;
 
 public interface IArticleDAO {
 	public List<Article> select(Article article);
+	public List<Article> select_orderByParm_start_count(
+			@Param ("parm") String parm, 
+			@Param("start")int start, 
+			@Param("count") int count
+			);
 	
 	public List<Article> select(HashMap<String, String> hashMap);
 	
