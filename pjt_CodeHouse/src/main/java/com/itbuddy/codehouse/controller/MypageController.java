@@ -25,22 +25,23 @@ public class MypageController {
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
 	
 	@Autowired
-	private IMemberService memberService;
+	private IMemberService memberService;	
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String mypage(Locale locale, Model model, HttpSession session) {
 		logger.info("Welcome board", locale);
+		
 
 		if(memberService.isLogin(session)) {
+			
 			return "myPage";
 		}else {
 			return "redirect:./";
 		}
-		
-		
-		
+			
 		
 	}
 	

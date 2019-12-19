@@ -51,7 +51,7 @@
 </head>
 
 <body>
-<jsp:include page="/common/topnav"></jsp:include>
+<jsp:include page="./common/topnav"></jsp:include>
 
 
     <div class="container" style="margin-top: 100px;">
@@ -62,11 +62,13 @@
                     
                     <h3 style="">내정보</h3> 
                     <div class="form-group">
-                        <img id="userImage" src="../../resources/imgs/noUserImage.png" class="rounded" style="width: 150px;" />
+                        <img id="userImage" src="./resources/imgs/noUserImage.png" class="rounded" style="width: 150px;" />
                         
                     </div>
                     <div class="btn btn-primary">
-                        정보 수정
+                       	
+                       	
+                       	 정보 수정
                     </div>
 
                     <div class="form-group">

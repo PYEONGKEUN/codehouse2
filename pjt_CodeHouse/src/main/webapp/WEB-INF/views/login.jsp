@@ -45,7 +45,7 @@
 </head>
 
 <body>
-   <jsp:include page="/common/topnav"></jsp:include>
+   <jsp:include page="./common/topnav"></jsp:include>
 
         <div class="container">
     <div class="row">

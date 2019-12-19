@@ -1,5 +1,6 @@
 package com.itbuddy.codehouse.DAO;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -23,4 +24,5 @@ public interface IArticleDAO {
     
     
     public int update(Article article);
+    
 }
