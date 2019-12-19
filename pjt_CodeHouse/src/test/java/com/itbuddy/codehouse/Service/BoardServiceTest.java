@@ -33,7 +33,7 @@ public class BoardServiceTest {
     
     @Test
     public void loginTest(){
-    	List<Article> articles = boardService.getArticles("art_create_time", 0, 10);
+    	List<Article> articles = boardService.getArticles( 0, 10,"art_create_time");
 
     	for(Article article : articles) {
     		LOGGER.info(article.toString());

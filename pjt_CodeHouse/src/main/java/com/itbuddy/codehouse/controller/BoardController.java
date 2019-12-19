@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.itbuddy.codehouse.DTO.Article;
 import com.itbuddy.codehouse.service.IBoardService;
+import com.itbuddy.codehouse.util.CheckString;
 
 /**
  * Handles requests for the application home page.
@@ -27,9 +28,7 @@ public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	@Autowired
 	private IBoardService boardService;
-	
-	@Autowired
-	private IBoardService boardService;
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */

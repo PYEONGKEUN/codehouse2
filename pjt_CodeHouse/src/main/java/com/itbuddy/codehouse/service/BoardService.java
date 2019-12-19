@@ -19,11 +19,11 @@ public class BoardService implements IBoardService{
 	private IArticleDAO articleDAO;
 	
 	@Override
-	public List<Article> getArticles(String parm,int start, int count) {
+	public List<Article> getArticles(int start, int count, String sortParam) {
 		// TODO Auto-generated method stub
 		List<Article> articles = null;
 		
-		articles = articleDAO.select_orderByParm_start_count(parm, start, count);
+		articles = articleDAO.select_start_count_sortParm(start, count, sortParam);
 		
 		return articles;
 	}

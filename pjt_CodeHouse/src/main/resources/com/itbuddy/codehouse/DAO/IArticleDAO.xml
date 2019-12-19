@@ -16,13 +16,17 @@
 	
 	
 	
-	
+	<!-- #{} 와 ${}는 차이가 있다
+
+		#이 보안에 유리
+		사용자 입력은 #하는것이 좋다.
+		
+		$는 보안에 불리 -> 쿼리 주입 공격이 가능 테이블병, 컬럼명을 전달할때 사용-->
 	<select id="select_start_count_sortParm" resultType="com.itbuddy.codehouse.DTO.Article">
 		SELECT *
 		FROM article
-		LIMIT #{start}, #{count}
-		<if test="srotParam != null">ORDER BY #{srotParam} DESC</if>
-
+		<if test="sortParam != null">ORDER BY ${sortParam} DESC</if>
+		LIMIT #{start}, #{count}		
 	</select>
 	
 	<!-- Integer형으로 반환받을 때는 resultType이 java.lang.Integer 형으로 받아야 한다. -->
