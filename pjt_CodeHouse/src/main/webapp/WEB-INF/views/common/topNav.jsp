@@ -16,9 +16,20 @@
         <li class="nav-item">
           <a class="nav-link" href="./board">Board</a>
         </li>
-      <li class="nav-item">
-          <a class="nav-link" href="./login">Login</a>
-        </li>
+        <c:choose>
+        	<c:when test="${isLogin}">
+        		<li class="nav-item">
+          			<a class="nav-link" href="./articleedit">Write</a>
+        		</li>
+        	</c:when>
+        	<c:otherwise>
+        		<li class="nav-item">
+          			<a class="nav-link" href="./login">Login</a>
+        		</li>
+        	</c:otherwise>        
+        </c:choose>
+        
+
         <c:if test="${isLogin}">
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
