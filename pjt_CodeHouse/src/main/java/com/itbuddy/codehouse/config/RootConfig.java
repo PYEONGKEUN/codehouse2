@@ -29,8 +29,8 @@ public class RootConfig {
 		ds.setUrl("jdbc:mysql://itbuddy.iptime.org:8233/codehouse"); 
 		ds.setUsername("yuhan"); 
 		ds.setPassword("yuhan1234"); 
-		//ds.setInitialSize(2);
-		//ds.setMaxActive(10);
+		ds.setInitialSize(2);
+		ds.setMaxActive(10);
 
 		
 		//ValidationQuery
