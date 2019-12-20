@@ -31,6 +31,7 @@ public class RootConfig {
 		ds.setPassword("yuhan1234"); 
 		ds.setInitialSize(2);
 		ds.setMaxActive(10);
+		ds.setMaxIdle(10);
 
 		
 		//ValidationQuery
