@@ -43,10 +43,10 @@ public class BoardService implements IBoardService{
 		// TODO Auto-generated method stub
 		
 		BoardVO boardVO = new BoardVO();
+		
 		boardVO.setTotArticlesCnt(totArticlesCnt);
 		boardVO.setPageCnt((int)Math.ceil(boardVO.getTotArticlesCnt()*1.0/boardVO.getPageSize()));
-		boardVO.setRangeCnt((int) Math.ceil(boardVO.getPageCnt()*1.0/boardVO.getRangeSize()));
-		
+		boardVO.setRangeCnt((int) Math.ceil(boardVO.getPageCnt()*1.0/boardVO.getRangeSize()));		
 		
 		boardVO.setCurPage(curPage);
 		boardVO.setStartPage((boardVO.getCurRange() - 1) * boardVO.getRangeSize() + 1);

@@ -33,11 +33,11 @@ body {
 
 <body>
 	<jsp:include page="/common/topnav"></jsp:include>
+	
 	<div class="container" style="margin-top: 100px;">
 		<div class="row">
 			<div class="col">
-				<table
-					class="table table-hover bg-light align-middle table-bordered">
+				<table id="board" class="table table-hover bg-light align-middle table-bordered">
 					<thead>
 						<tr>
 							<th class="bg-primary" scope="col" style="width:10%;">번호</th>
@@ -48,7 +48,7 @@ body {
 					</thead>
 					<tbody>
 						<c:forEach items="${boardVO.articles}" var="article">
-							<tr>
+							<tr >
 								<th scope="row">${article.art_no}</th>
 								<td>${article.art_title}</td>
 								<td>${article.art_create_time}</td>
@@ -121,5 +121,22 @@ body {
 		</div>
 	</div>
 </body>
+<script>
+//테이블의 행을 클릭하면 article로 연결
+$("#board tr").click(function(){     
+	 
+    var str = ""
+    var tdArr = new Array();    // 배열 선언
+        
+    // 현재 클릭된 Row(<tr>)
+    var tr = $(this);
+    var td = tr.children();
+	
+    var no = td.eq(0).text();
+    
+
+	window.location.href = './article?article='+no;
+});
+</script>
 
 </html>

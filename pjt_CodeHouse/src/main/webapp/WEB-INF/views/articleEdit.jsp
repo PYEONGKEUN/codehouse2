@@ -60,10 +60,10 @@
         <div class="row">
             <div class="col-lg">
                 <div class="content">
-                    <form method="post" action="">
+                    <form method="post" action="./articleedit.insert">
                         <div class="row">
                             <div class="col">
-                                <input class="form-control form-control-lg" type="text" placeholder="제목">
+                                <input name="title" class="form-control form-control-lg" type="text" placeholder="제목">
                             </div>
                         </div>
                         <hr />

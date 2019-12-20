@@ -53,40 +53,33 @@
 
 <body>
    <jsp:include page="/common/topnav"></jsp:include>
-
-
-
     <div class="container" style="margin-top: 100px;">
         <div class="row">
             <div class="col-lg">
                 <div class="content">
                     <div class="row">
-                        <div class="col">
-                            <h2 class="text-center">제목</h2>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row justify-content-end">
-                        <div class="col-3">
-                            <p>날짜</p>
-                        </div>
-                    </div>
-                    <div class="row justify-content-end">
-                        <div class="col-3">
-                            <p>글쓴이</p>
-                        </div>
-                    </div>
+                    	<div class="col">
+                    		<h2 class="text-center">${article.art_title}</h2>
+                    	</div>
+	                    <div class="col-3">
+		                    <div class="row justify-content-end">
+		                        <div class="col">
+		                            <p>${article.art_create_time}</p>
+		                        </div>
+		                    </div>
+		                    <div class="row justify-content-end">
+		                        <div class="col">
+		                            <p>${article.mem_id}</p>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
                     <hr />
                     <div class="row">
-                        <div class="col"></div>
+                        <div class="col">${article.art_content}</div>
 
                     </div>
                 </div>
-
-
-
-
-
             </div>
         </div>
 

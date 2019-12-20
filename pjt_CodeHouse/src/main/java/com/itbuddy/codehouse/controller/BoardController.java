@@ -59,11 +59,6 @@ public class BoardController {
 
 		model.addAttribute("boardVO", boardVO);
 
-
-
-
-
-
 		return "board";
 	}
 
