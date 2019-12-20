@@ -2,9 +2,11 @@ package com.itbuddy.codehouse.Service;
 
 import com.itbuddy.codehouse.DTO.Article;
 import com.itbuddy.codehouse.DTO.Member;
+import com.itbuddy.codehouse.VO.BoardVO;
 import com.itbuddy.codehouse.config.RootConfig;
 import com.itbuddy.codehouse.service.IBoardService;
 import com.itbuddy.codehouse.service.IMemberService;
+import com.itbuddy.codehouse.util.CheckString;
 
 import java.util.List;
 
@@ -31,13 +33,30 @@ public class BoardServiceTest {
     private IBoardService boardService;
 
     
+//    @Test
+//    public void loginTest(){
+//    	List<Article> articles = boardService.getArticles( 0, 10,"art_create_time");
+//
+//    	for(Article article : articles) {
+//    		LOGGER.info(article.toString());
+//    	}
+//        
+//
+//    }
     @Test
-    public void loginTest(){
-    	List<Article> articles = boardService.getArticles( 0, 10,"art_create_time");
+    public void paginationTest(){
+    	int articleTotalCnt = boardService.getArticlesCount();
+    	BoardVO boardVO = boardService.pagination(articleTotalCnt, Integer.parseInt("1"), "art_create_time",null,null);
 
-    	for(Article article : articles) {
+    	for(Article article : boardVO.getArticles()) {
     		LOGGER.info(article.toString());
     	}
+    	if(CheckString.isNumber("1a")) {
+    		LOGGER.info("true");
+    	}else {
+    		LOGGER.info("false");
+    	}
+    	
         
 
     }

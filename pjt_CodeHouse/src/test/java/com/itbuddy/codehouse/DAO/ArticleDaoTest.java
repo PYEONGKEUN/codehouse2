@@ -38,11 +38,11 @@ public class ArticleDaoTest {
 //        }
 //    }
     
-    @Test
-    public void selectArticlesCountTest() {
-    	int result = articleDAO.selectArticlesCount();
-    	LOGGER.info(result + "");
-    }
+//    @Test
+//    public void selectArticlesCountTest() {
+//    	int result = articleDAO.selectArticlesCount();
+//    	LOGGER.info(result + "");
+//    }
 
 //    @Test
 //    public void updateTest(){
@@ -61,24 +61,24 @@ public class ArticleDaoTest {
 //
 //    }
 //
-//    @Test
-//    public void insertTest(){
-//
-//        Article input = new Article();
-//        
-//        
-//        input.setArt_title("테스트");
-//        input.setArt_content("테스트"); 
-//        input.setArt_create_time(TimeLib.getCurrDateTime());
-//        input.setArt_modify_time(TimeLib.getCurrDateTime());
-//        input.setMem_id("skvudrms54");
-//
-//        int num = articleDAO.insert(input);       
-//           
-//        LOGGER.info("성공한 갯수 : " + num +" - "+input.toString());
-//
-//
-//        
-//    }
+    @Test
+    public void insertTest(){
+
+        Article input = new Article();
+        
+        
+        input.setArt_title("테스트");
+        input.setArt_content("테스트"); 
+        input.setArt_create_time(TimeLib.getCurrDateTime());
+        input.setArt_modify_time(TimeLib.getCurrDateTime());
+        input.setMem_id("skvudrms54");
+
+        int num = articleDAO.insert(input);       
+           
+        LOGGER.info("성공한 갯수 : " + num +" - "+input.toString());
+
+
+        
+    }
     
 }

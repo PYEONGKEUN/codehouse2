@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,91 +34,92 @@ body {
 <body>
 	<jsp:include page="/common/topnav"></jsp:include>
 	<div class="container" style="margin-top: 100px;">
-
 		<div class="row">
 			<div class="col">
 				<table
 					class="table table-hover bg-light align-middle table-bordered">
 					<thead>
 						<tr>
-							<th class="bg-primary" scope="col">#</th>
-							<th class="bg-primary" scope="col">First</th>
-							<th class="bg-primary" scope="col">Last</th>
-							<th class="bg-primary" scope="col">Handle</th>
+							<th class="bg-primary" scope="col" style="width:10%;">번호</th>
+							<th class="bg-primary" scope="col" style="width:50%;">제목</th>
+							<th class="bg-primary" scope="col" style="width:30%;">작성일</th>
+							<th class="bg-primary" scope="col" style="width:10%;">작성자</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${articles}" var="article">
+						<c:forEach items="${boardVO.articles}" var="article">
 							<tr>
-								<th scope="row">article.art_no</th>
-								<td>article.art_title</td>
-								<td>article.art_create_time</td>
-								<td>article.mem_id</td>
+								<th scope="row">${article.art_no}</th>
+								<td>${article.art_title}</td>
+								<td>${article.art_create_time}</td>
+								<td>${article.mem_id}</td>
 							</tr>
 
 						</c:forEach>
-						<tr>
-							<th scope="row">1</th>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="container d-flex justify-content-center">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
 
-        <div class="row">
-            <div class="col">
-                <table class="table table-hover bg-light align-middle table-bordered">
-                    <thead>
-                        <tr>
-                            <th class="bg-primary" scope="col">#</th>
-                            <th class="bg-primary" scope="col">First</th>
-                            <th class="bg-primary" scope="col">Last</th>
-                            <th class="bg-primary" scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    	<c:forEach items="${articles}" var="article">
-	                    	<tr>
-	                            <th scope="row">${article.getArt_no}</th>
-	                            <td>${article.getArt_title}</td>
-	                            <td>${article.getArt_create_time}</td>
-	                            <td>${article.getMem_id}</td>
-	                        </tr>
-                    	
-                    	</c:forEach>               
+							<c:choose>
+								<c:when test="${boardVO.curPage ne 1 }">
+									<li class="page-item">
+										<a class="page-link" href="./board?page=${boardVO.curPage-1}"	aria-label="Previous">
+											<span aria-hidden="true">&laquo;</span>
+										</a>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item disabled" >
+										<a class="page-link" aria-label="Previous" aria-disabled="true"> 
+											<span aria-hidden="true">&laquo;</span>
+										</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
 
-                       
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row" >
-            <div class="col">               
-                <div class="container d-flex justify-content-center">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-
+							<c:forEach var="pageNum" begin="${boardVO.startPage}" end="${boardVO.endPage}">
+								<c:choose>
+									<c:when test="${pageNum eq  boardVO.curPage}">
+										<li class="page-item active">
+											<a class="page-link" href="./board?page=${pageNum}">${pageNum}</a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item">
+											<a class="page-link" href="./board?page=${pageNum}">${pageNum}</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:choose>
+								<c:when	test="${boardVO.curPage ne boardVO.pageCnt && boardVO.pageCnt > 0}">
+									<li class="page-item">
+										<a class="page-link" href="./board?page=${boardVO.curPage+1}" aria-label="Next">
+											<span aria-hidden="true">&raquo;</span>
+										</a>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item disabled">
+										<a class="page-link" aria-label="Next" aria-disabled="true">
+											<span aria-hidden="true">&raquo;</span>
+										</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
+							
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
 	</div>
-
-
-
 </body>
 
 </html>
