@@ -15,7 +15,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
 
 
-
     <style>
         html {
             height: 100%;
@@ -50,7 +49,6 @@
 <body>
    <jsp:include page="/common/topnav"></jsp:include>
 
-
     <div class="container" style="margin-top: 100px;">
         <div class="row">
             <div class="col-lg">
@@ -59,7 +57,7 @@
                     <form class="input" role="form">
                         <h3>회원가입</h3>
                         <div class="form-group">
-                            <img id="userImage" src="../../resources/imgs/noUserImage.png" class="rounded" style="width: 150px;" />
+                            <img id="userImage" src="./resources/imgs/noUserImage.png" class="rounded" style="width: 150px;" />
                         </div>
 
                         <div class="form-group">
