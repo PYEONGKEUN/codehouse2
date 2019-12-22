@@ -63,7 +63,7 @@ body {
 		<div class="row">
 			<div class="col">
 				<div class="container d-flex justify-content-center">
-					<nav aria-label="Page navigation example">
+					<nav aria-label="Page navigation">
 						<ul class="pagination">
 
 							<c:choose>

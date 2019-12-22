@@ -42,7 +42,7 @@ public class BoardController {
 
 
 		BoardVO boardVO = new BoardVO();
-		int articleTotalCnt = boardService.getArticlesCount(); // 전체 article 개수 구해오는 부분
+		int articleTotalCnt = boardService.getArticlesCount(null, null); // 전체 article 개수 구해오는 부분
 		String curPage = (String)httpServletRequest.getParameter("page");
 		
 		if(curPage != null) {

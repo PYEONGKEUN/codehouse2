@@ -15,11 +15,9 @@ import com.itbuddy.codehouse.DTO.Article;
 public interface IArticleDAO {
 	public List<Article> select(Article article);
 	
-	public List<Article> select_start_count_sortParm( @Param("start") int start,
-			@Param("count") int count,
-			@Nullable @Param("sortParam") String sortParam);
+	public List<Article> select_start_count_sortParm(HashMap<String, String> hashmap);
 	
-	public int selectArticlesCount();
+	public int selectArticlesCount(HashMap<String, String> hashmap);
     
     public int insert(Article article);
     
