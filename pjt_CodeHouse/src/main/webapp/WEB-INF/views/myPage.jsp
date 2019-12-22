@@ -64,7 +64,7 @@
                 
                     <h3 style="">내정보</h3> 
                     <div class="form-group">
-                    	<img id="userImage" src="${member.mem_img}.png" class="rounded" style="width: 150px;"/>
+                    	<img id="userImage" src="${member.mem_img}" class="rounded" style="width: 150px;"/>
                     </div>
                     <div class="btn btn-primary">
                        	 정보 수정
@@ -95,111 +95,98 @@
 
             <div class="col-lg">
                 <div id="viewController" class="btn-group" role="group" style="width: 100%; background: white;">
-                    <button type="button" id="showPage1Btn" data-launch-view="page1" class="btn btn-outline-dark active" style="width: 100%;">내가 쓴글</button>
-                    <button type="button" id="showPage2Btn" data-launch-view="page2" class="btn btn-outline-dark" style="width: 100%;">내 댓글</button>
+                    <button type="button" id="btnArticle" data-launch-view="article" class="btn btn-outline-dark active" style="width: 100%;">내가 쓴글</button>
+                    <button type="button" id="btnComment" data-launch-view="comment" class="btn btn-outline-dark" style="width: 100%;">내 댓글</button>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <div class="view" id="page1">
-                    <table class="table table-hover bg-light align-middle table-bordered">
+            <!-- 게시글 목록  -->
+                <div class="view" id="article">
+                    <table id="board" class="table table-hover bg-light align-middle table-bordered">
                         <thead>
-                            <tr>
-                                <th class="bg-primary" scope="col">#</th>
-                                <th class="bg-primary" scope="col">First</th>
-                                <th class="bg-primary" scope="col">Last</th>
-                                <th class="bg-primary" scope="col">Handle</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">4</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">5</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">6</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">7</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">8</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">9</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">10</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                        </tbody>
+						<tr>
+							<th class="bg-primary" scope="col" style="width:10%;">번호</th>
+							<th class="bg-primary" scope="col" style="width:50%;">제목</th>
+							<th class="bg-primary" scope="col" style="width:30%;">작성일</th>
+							<th class="bg-primary" scope="col" style="width:10%;">작성자</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${boardVO.articles}" var="article">
+							<tr >
+								<th scope="row">${article.art_no}</th>
+								<td>${article.art_title}</td>
+								<td>${article.art_create_time}</td>
+								<td>${article.mem_id}</td>
+							</tr>
+
+						</c:forEach>
+					</tbody>
                     </table>
                     <div class="row">
                         <div class="col">
-                            <div class="container d-flex justify-content-center">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
+                           <div class="container d-flex justify-content-center">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+
+							<c:choose>
+								<c:when test="${boardVO.curPage ne 1 }">
+									<li class="page-item">
+										<a class="page-link" onclick="onClickBoardPaging(${boardVO.curPage-1})"	aria-label="Previous">
+											<span aria-hidden="true">&laquo;</span>
+										</a>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item disabled" >
+										<a class="page-link" aria-label="Previous" aria-disabled="true"> 
+											<span aria-hidden="true">&laquo;</span>
+										</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
+
+							<c:forEach var="pageNum" begin="${boardVO.startPage}" end="${boardVO.endPage}">
+								<c:choose>
+									<c:when test="${pageNum eq  boardVO.curPage}">
+										<li class="page-item active">
+											<a class="page-link" onclick="onClickBoardPaging(${pageNum})">${pageNum}</a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item">
+											<a class="page-link" onclick="onClickBoardPaging(${pageNum})">${pageNum}</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:choose>
+								<c:when	test="${boardVO.curPage ne boardVO.pageCnt && boardVO.pageCnt > 0}">
+									<li class="page-item">
+										<a class="page-link" onclick="onClickBoardPaging(${boardVO.curPage+1})" aria-label="Next">
+											<span aria-hidden="true">&raquo;</span>
+										</a>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item disabled">
+										<a class="page-link" aria-label="Next" aria-disabled="true">
+											<span aria-hidden="true">&raquo;</span>
+										</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
+							
+						</ul>
+					</nav>
+				</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="view hide" id="page2">
+                <div class="view hide" id="comment">
                     <table class="table table-hover bg-light align-middle table-bordered">
                         <thead>
                             <tr>
@@ -297,12 +284,9 @@
                 </div>
             </div>
         </div>
-
-
-
-
     </div>
     <script>
+    var params; 
         //이미지 업로드 AJAX
         // 이미지 업로드가 session["mem_id"]에 종속됨 없으면 업로드 불가
         function sendFile(file) {
@@ -328,7 +312,6 @@
         }
 
         $(document).ready(function() {
-            // test라는 클래스를가진 div를 클릭할 경우 "테스트입니다요."라는 alert가 뜬다.
             $("#userImage").on("click", function() {
                 document.getElementById('inputImage').click();
             });
@@ -351,6 +334,9 @@
 
         });
 
+
+        // 버튼 클릭에 따라 prameter의 값을 바꿈
+        // class Name도 바꿈
         function changeCategoryClass(el) {
             var category = document.getElementById('viewController'),
                 children = category.children,
@@ -362,9 +348,132 @@
 
             if (el) {
                 el.className = 'btn btn-outline-dark active';
+                if(el.id == "btnComment"){
+                    params.setView("comment");
+                }else{
+                    params.setView("article");
+                }
             }
+
         }
-    </script>
+       
+
+		
+        // get parameter 세팅을 위한 코드
+        
+        var getParameter = function(param) {
+			var returnValue;
+			var url = location.href;
+			var parameters = (url.slice(url.indexOf('?') + 1,
+					url.length)).split('&');
+			for (var i = 0; i < parameters.length; i++) {
+				var varName = parameters[i].split('=')[0];
+				if (varName.toUpperCase() == param.toUpperCase()) {
+					returnValue = parameters[i].split('=')[1];
+					return decodeURIComponent(returnValue);
+				}
+			}
+		};
+		
+	
+		
+		
+		class Params{
+            constructor(artpage, cmtpage, view) {
+                this.artpage = artpage;
+                this.cmtpage = cmtpage;
+                this.view = view;                
+            }
+            setArtpage(artpage){
+                this.artpage = artpage;
+            }
+            setCmtpage(cmtpage){
+                this.cmtpage = cmtpage;
+            }
+            setView(view){
+                this.view = view;
+            }
+            
+        }
+		var setParameters = function(){
+            var url = location.href;
+            
+            var returnValue;
+            if(url.indexOf('?') != -1){
+                returnValue = (url.slice(0, url.indexOf('?')+1));
+            }else{
+                returnValue = url+"?";
+            }
+            
+            
+            if(params.artpage!=null){
+                returnValue += "artpage="+params.artpage+"&";
+            }else{
+                returnValue += "artpage="+1+"&"
+            }
+            if(params.cmtpage!=null){
+                returnValue += "cmtpage="+params.cmtpage+"&";
+            }else{
+                returnValue += "cmtpage="+1+"&"
+            }
+            if(params.view!=null){
+                returnValue += "view="+params.view+"&";
+            }else{
+                returnValue += "view=article&"
+            }
+
+            if(returnValue[returnValue.length-1] == "&"){
+                returnValue = returnValue.slice(0,returnValue.length-1)
+            }
+            return returnValue;
+		}
+        $(document).ready(function() {
+            params = new Params(getParameter("artpage"),getParameter("cmtpage"),getParameter("view"));
+        });
+		
+		
+		
+		$("#board tr").click(function(){     
+			 
+		    var str = ""
+		    var tdArr = new Array();    // 배열 선언
+		        
+		    // 현재 클릭된 Row(<tr>)
+		    var tr = $(this);
+		    var td = tr.children();
+			
+		    var no = td.eq(0).text();
+		    
+
+			window.location.href = './article?article='+no;
+        });
+        $("#comment tr").click(function(){     
+			 
+             var str = ""
+             var tdArr = new Array();    // 배열 선언
+                 
+             // 현재 클릭된 Row(<tr>)
+             var tr = $(this);
+             var td = tr.children();
+             
+             var no = td.eq(0).text();
+             
+ 
+             window.location.href = './article?comment='+no;
+         });
+
+         //pagination nav 처리
+
+        var onClickBoardPaging = function(no){
+            params.setArtpage(no);
+            window.location.href = setParameters();
+        }
+        var onClickCommentPaging = function(no){
+            params.setCmtpage(no);
+            window.location.href = setParameters();
+        }
+		
+		</script>
 
 </body>
 

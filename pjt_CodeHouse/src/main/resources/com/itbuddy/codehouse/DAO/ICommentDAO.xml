@@ -12,9 +12,47 @@
             <if test="cmt_create_time != null">AND cmt_create_time=#{cmt_create_time}</if>
             <if test="cmt_modify_time != null">AND cmt_modify_time=#{cmt_modify_time}</if>
             <if test="mem_id != null">AND mem_id=#{mem_id}</if>
+            <if test="art_no != null">AND art_no=#{art_no}</if>
         </trim>
 
     </select>
+    
+	<!-- #{} 와 ${}는 차이가 있다
+
+		#이 보안에 유리
+		사용자 입력은 #하는것이 좋다.
+		
+		$는 보안에 불리 -> 쿼리 주입 공격이 가능 테이블병, 컬럼명을 전달할때 사용-->
+	<select id="select_start_count_sortParm" parameterType="java.util.HashMap" resultType="com.itbuddy.codehouse.DTO.Article">
+		SELECT *
+		FROM article
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="where_art_no != null">AND art_no=#{where_art_no}</if>
+			<if test="where_art_title != null">AND art_title=#{where_art_title}</if>
+			<if test="where_art_content != null">AND art_content=#{where_art_content}</if>
+			<if test="where_art_create_time != null">AND art_create_time=#{where_art_create_time}</if>
+			<if test="where_art_modify_time != null">AND art_modify_time=#{where_art_modify_time}</if>
+			<if test="where_mem_id != null">AND mem_id=#{where_mem_id}</if>			
+		</trim>
+		
+		<if test="sortParam != null">ORDER BY ${sortParam} DESC</if>
+		LIMIT ${start}, ${count}		
+	</select>
+	
+	<!-- Integer형으로 반환받을 때는 resultType이 java.lang.Integer 형으로 받아야 한다. -->
+	<select id="selectArticlesCount" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		SELECT count(art_no)
+		FROM article
+				<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="where_art_no != null">AND art_no=#{where_art_no}</if>
+			<if test="where_art_title != null">AND art_title=#{where_art_title}</if>
+			<if test="where_art_content != null">AND art_content=#{where_art_content}</if>
+			<if test="where_art_create_time != null">AND art_create_time=#{where_art_create_time}</if>
+			<if test="where_art_modify_time != null">AND art_modify_time=#{where_art_modify_time}</if>
+			<if test="where_mem_id != null">AND mem_id=#{where_mem_id}</if>			
+		</trim>
+	</select>
+    
 
     <update id="update" parameterType="com.itbuddy.codehouse.DTO.Comment">
         UPDATE comment
@@ -24,13 +62,14 @@
             <if test="cmt_create_time != null">cmt_create_time=#{cmt_create_time},</if>
             <if test="cmt_modify_time != null">cmt_modify_time=#{cmt_modify_time},</if>
             <if test="mem_id != null">mem_id=#{mem_id},</if>
+            <if test="art_no != null">art_no=#{art_no},</if>
         </trim>
         WHERE cmt_no=#{cmt_no}
     </update>
 
     <insert id="insert"  useGeneratedKeys="true" keyProperty="cmt_no" keyColumn="cmt_no">
-        INSERT INTO comment(cmt_title, cmt_content, cmt_create_time, cmt_modify_time, mem_id)
-        values(#{cmt_title},#{cmt_content},#{cmt_create_time},#{cmt_modify_time},#{mem_id})
+        INSERT INTO comment(cmt_title, cmt_content, cmt_create_time, cmt_modify_time, mem_id, art_no)
+        values(#{cmt_title},#{cmt_content},#{cmt_create_time},#{cmt_modify_time},#{mem_id},#{art_no})
     </insert>
 
 </mapper>

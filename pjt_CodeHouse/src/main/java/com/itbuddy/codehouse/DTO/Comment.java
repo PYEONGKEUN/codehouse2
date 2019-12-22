@@ -7,6 +7,13 @@ public class Comment {
 	String cmt_create_time;
 	String cmt_modify_time;
 	String mem_id;
+	Integer art_no;
+	public Integer getArt_no() {
+		return art_no;
+	}
+	public void setArt_no(Integer art_no) {
+		this.art_no = art_no;
+	}
 	public Integer getCmt_no() {
 		return cmt_no;
 	}
@@ -47,7 +54,8 @@ public class Comment {
 	public String toString() {
 		return "Comment [cmt_no=" + cmt_no + ", cmt_title=" + cmt_title + ", cmt_content=" + cmt_content
 				+ ", cmt_create_time=" + cmt_create_time + ", cmt_modify_time=" + cmt_modify_time + ", mem_id=" + mem_id
-				+ "]";
+				+ ", art_no=" + art_no + "]";
 	}
+
 
 }
