@@ -1,6 +1,5 @@
 package com.itbuddy.codehouse.DAO;
 
-import java.util.List;
 
 import com.itbuddy.codehouse.DTO.Article;
 import com.itbuddy.codehouse.config.RootConfig;

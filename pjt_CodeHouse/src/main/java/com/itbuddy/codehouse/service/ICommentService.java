@@ -9,4 +9,5 @@ import com.itbuddy.codehouse.VO.CommentsVO;
 public interface ICommentService {
 
 	public CommentsVO pagination(int totCommentsCnt, int curPage, String sortParam, @Nullable Comment whereParam, @Nullable Comment likeParam);
+	public int getCommentsCount(@Nullable Comment whereParam, @Nullable Comment likeParam);
 }

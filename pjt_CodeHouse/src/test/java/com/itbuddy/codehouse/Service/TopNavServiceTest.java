@@ -1,10 +1,9 @@
 package com.itbuddy.codehouse.Service;
 
-import com.itbuddy.codehouse.DTO.Member;
+
 import com.itbuddy.codehouse.config.RootConfig;
 import com.itbuddy.codehouse.service.IMemberService;
 
-import javax.servlet.http.HttpSession;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

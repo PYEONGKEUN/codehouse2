@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.itbuddy.codehouse.DTO.Article;
+import com.itbuddy.codehouse.DTO.Comment;
 import com.itbuddy.codehouse.DTO.Member;
 import com.itbuddy.codehouse.VO.BoardVO;
+import com.itbuddy.codehouse.VO.CommentsVO;
 import com.itbuddy.codehouse.service.IBoardService;
+import com.itbuddy.codehouse.service.ICommentService;
 import com.itbuddy.codehouse.service.IMemberService;
 import com.itbuddy.codehouse.service.IMyPageService;
 import com.itbuddy.codehouse.util.CheckString;
@@ -36,6 +39,9 @@ public class MypageController {
 	
 	@Autowired
 	private IBoardService boardService;
+
+	@Autowired
+	private ICommentService commentService;
 	
 	@Autowired
 	private IMyPageService myPageService;
@@ -63,14 +69,14 @@ public class MypageController {
 			model.addAttribute("member", member);
 			
 			
-
+			//articles 페이징
 			BoardVO boardVO = new BoardVO();
 			
 			// where 조건 
-			Article whereParam = new Article();
-			whereParam.setMem_id(member.getMem_id());
+			Article artWhereParam = new Article();
+			artWhereParam.setMem_id(member.getMem_id());
 			
-			int articleTotalCnt = boardService.getArticlesCount(whereParam,null); // 전체 article 개수 구해오는 부분
+			int articleTotalCnt = boardService.getArticlesCount(artWhereParam,null); // 전체 article 개수 구해오는 부분
 			String artCurPage = (String)httpServletRequest.getParameter("artpage");
 			
 			if(artCurPage != null) {
@@ -83,13 +89,35 @@ public class MypageController {
 			}
 			logger.info(artCurPage);
 
-			boardVO = boardService.pagination(articleTotalCnt, Integer.parseInt(artCurPage), "art_create_time",whereParam,null);
+			boardVO = boardService.pagination(articleTotalCnt, Integer.parseInt(artCurPage), "art_create_time",artWhereParam,null);
 			
 			model.addAttribute("boardVO", boardVO);
 			
 			
 			
-			//
+			//comments 페이징
+			CommentsVO commentsVO = new CommentsVO();
+			
+			// where 조건 
+			Comment cmtWhereParam = new Comment();
+			cmtWhereParam.setMem_id(member.getMem_id());
+			
+			int commentTotalCnt = commentService.getCommentsCount(cmtWhereParam,null); // 전체 article 개수 구해오는 부분
+			String cmtCurPage = (String)httpServletRequest.getParameter("cmtpage");
+			
+			if(cmtCurPage != null) {
+				if(!CheckString.isNumber(cmtCurPage)) {				
+					cmtCurPage = "1";
+				}
+			}else {
+				cmtCurPage = "1";
+				
+			}
+			logger.info(cmtCurPage);
+
+			commentsVO = commentService.pagination(commentTotalCnt, Integer.parseInt(cmtCurPage), "cmt_create_time",cmtWhereParam,null);
+			
+			model.addAttribute("commentsVO", commentsVO);
 			
 			
 			return "myPage";

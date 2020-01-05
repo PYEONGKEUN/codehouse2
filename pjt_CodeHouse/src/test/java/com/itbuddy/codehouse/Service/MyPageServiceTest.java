@@ -1,11 +1,7 @@
 package com.itbuddy.codehouse.Service;
 
-import java.util.List;
-
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpSession;
-
-import javax.servlet.http.HttpSession;
 
 import org.junit.After;
 import org.junit.Before;
@@ -13,15 +9,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mock.web.MockHttpSession;
-import org.springframework.stereotype.Service;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.itbuddy.codehouse.DAO.IMemberDAO;
 import com.itbuddy.codehouse.DTO.Member;
 import com.itbuddy.codehouse.config.RootConfig;
 

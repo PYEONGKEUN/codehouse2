@@ -23,33 +23,34 @@
 		사용자 입력은 #하는것이 좋다.
 		
 		$는 보안에 불리 -> 쿼리 주입 공격이 가능 테이블병, 컬럼명을 전달할때 사용-->
-	<select id="select_start_count_sortParm" parameterType="java.util.HashMap" resultType="com.itbuddy.codehouse.DTO.Article">
+	<select id="select_start_count_sortParm" parameterType="java.util.HashMap" resultType="com.itbuddy.codehouse.DTO.Comment">
 		SELECT *
-		FROM article
+		FROM comment
 		<trim prefix="WHERE" prefixOverrides="AND|OR">
-			<if test="where_art_no != null">AND art_no=#{where_art_no}</if>
-			<if test="where_art_title != null">AND art_title=#{where_art_title}</if>
-			<if test="where_art_content != null">AND art_content=#{where_art_content}</if>
-			<if test="where_art_create_time != null">AND art_create_time=#{where_art_create_time}</if>
-			<if test="where_art_modify_time != null">AND art_modify_time=#{where_art_modify_time}</if>
-			<if test="where_mem_id != null">AND mem_id=#{where_mem_id}</if>			
-		</trim>
-		
+			<if test="where_cmt_no != null">AND cmt_no=#{where_cmt_no}</if>
+			<if test="where_cmt_title != null">AND cmt_title=#{where_cmt_title}</if>
+			<if test="where_cmt_content != null">AND cmt_content=#{where_cmt_content}</if>
+			<if test="where_cmt_create_time != null">AND cmt_create_time=#{where_cmt_create_time}</if>
+			<if test="where_cmt_modify_time != null">AND cmt_modify_time=#{where_cmt_modify_time}</if>
+			<if test="where_mem_id != null">AND mem_id=#{where_mem_id}</if>
+			<if test="where_art_no != null">AND art_no=#{where_art_no}</if>				
+		</trim>		
 		<if test="sortParam != null">ORDER BY ${sortParam} DESC</if>
 		LIMIT ${start}, ${count}		
 	</select>
 	
 	<!-- Integer형으로 반환받을 때는 resultType이 java.lang.Integer 형으로 받아야 한다. -->
-	<select id="selectArticlesCount" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+	<select id="selectCommentsCount" parameterType="java.util.HashMap" resultType="java.lang.Integer">
 		SELECT count(art_no)
-		FROM article
-				<trim prefix="WHERE" prefixOverrides="AND|OR">
-			<if test="where_art_no != null">AND art_no=#{where_art_no}</if>
-			<if test="where_art_title != null">AND art_title=#{where_art_title}</if>
-			<if test="where_art_content != null">AND art_content=#{where_art_content}</if>
-			<if test="where_art_create_time != null">AND art_create_time=#{where_art_create_time}</if>
-			<if test="where_art_modify_time != null">AND art_modify_time=#{where_art_modify_time}</if>
-			<if test="where_mem_id != null">AND mem_id=#{where_mem_id}</if>			
+		FROM comment
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="where_cmt_no != null">AND cmt_no=#{where_cmt_no}</if>
+			<if test="where_cmt_title != null">AND cmt_title=#{where_cmt_title}</if>
+			<if test="where_cmt_content != null">AND cmt_content=#{where_cmt_content}</if>
+			<if test="where_cmt_create_time != null">AND cmt_create_time=#{where_cmt_create_time}</if>
+			<if test="where_cmt_modify_time != null">AND cmt_modify_time=#{where_cmt_modify_time}</if>
+			<if test="where_mem_id != null">AND mem_id=#{where_mem_id}</if>
+			<if test="where_art_no != null">AND art_no=#{where_art_no}</if>			
 		</trim>
 	</select>
     

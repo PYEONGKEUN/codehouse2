@@ -1,291 +1,288 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>codeshare</title>
-    <!--bootstrap-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-    <!--summernote-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+<meta charset="UTF-8">
+<title>codeshare</title>
+<!--bootstrap-->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<!--summernote-->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css"
+	rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
 
 
 
-    <style>
-        html {
-            height: 100%;
-            overflow: hidden;
-        }
+<style>
+html {
+	height: 100%;
+	overflow: hidden;
+}
 
+body {
+	margin: 0;
+	padding: 0;
+	perspective: 1px;
+	transform-style: preserve-3d;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	font-family: "Luna";
+	background: #454c55;
+}
 
-        body {
-            margin: 0;
-            padding: 0;
-            perspective: 1px;
-            transform-style: preserve-3d;
-            height: 100%;
-            overflow-x: hidden;
-            overflow-y: auto;
-            font-family: "Luna";
-            background: #454c55;
+.mypage-main {
+	background: white;
+	padding: 30px;
+	border-radius: 5px;
+}
 
-        }
-
-        .mypage-main {
-            background: white;
-            padding: 30px;
-            border-radius: 5px;
-
-        }
-
-        .hide {
-            display: none;
-        }
-    </style>
+.hide {
+	display: none;
+}
+</style>
 
 </head>
 
 <body>
-<jsp:include page="/common/topnav"></jsp:include>
+	<jsp:include page="/common/topnav"></jsp:include>
+
+		<c:choose>
+			<c:when test="empty ${param.view}"><c:set var="view" value="article"/></c:when>
+			<c:when test="${null eq param.view}"><c:set var="view" value="article"/></c:when>
+			<c:otherwise><c:set var="view" value="${param.view}"/>			
+			</c:otherwise>
+		</c:choose>
+		
+		
+
+	<div class="container" style="margin-top: 100px;">
+		<div class="row">
+			<div class="col-lg">
+				<div class="mypage-main">
+					<h3 >내정보</h3>
+					<div class="form-group">
+						<img id="userImage" src="${member.mem_img}" class="rounded"
+							style="width: 150px;" />
+					</div>
+					<div class="btn btn-primary">정보 수정</div>
+
+					<div class="form-group">
+						<label for="inputId">아이디</label> <input type="text"
+							class="form-control" value="${member.mem_id}" readonly />
+					</div>
 
 
+					<div class="form-group">
+						<label for="inputNickName">닉네임</label> <input type="text"
+							class="form-control" value="${member.mem_nickname}" readonly />
+					</div>
+					<div class="form-group">
+						<label for="inputEmail">이메일</label> <input type="text"
+							class="form-control" value="${model.mem_email}" readonly />
+					</div>
 
-    <div class="container" style="margin-top: 100px;">
-        <div class="row">
-            <div class="col-lg">
-                <div class="mypage-main">
-                
-                    <h3 style="">내정보</h3> 
-                    <div class="form-group">
-                    	<img id="userImage" src="${member.mem_img}" class="rounded" style="width: 150px;"/>
-                    </div>
-                    <div class="btn btn-primary">
-                       	 정보 수정
-                    </div>
+					<input style="visibility: hidden;" type="file" accept="image/*"
+						multiple="false" class="form-control" id="inputImage">
 
-                    <div class="form-group">
-                        <label for="inputId">아이디</label>
-                        <input type="text" class="form-control" value="${member.mem_id}" readonly />
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="inputNickName">닉네임</label>
-                        <input type="text" class="form-control" value="${member.mem_nickname}" readonly />
-                    </div>
-                    <div class="form-group">
-                        <label for="inputEmail">이메일</label>
-                        <input type="text" class="form-control" value="${model.mem_email}" readonly />
-                    </div>
-
-                    <input style="visibility: hidden;" type="file" accept="image/*" multiple="false" class="form-control" id="inputImage">
-
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col-lg">
-                <div id="viewController" class="btn-group" role="group" style="width: 100%; background: white;">
-                    <button type="button" id="btnArticle" data-launch-view="article" class="btn btn-outline-dark active" style="width: 100%;">내가 쓴글</button>
-                    <button type="button" id="btnComment" data-launch-view="comment" class="btn btn-outline-dark" style="width: 100%;">내 댓글</button>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-            <!-- 게시글 목록  -->
-                <div class="view" id="article">
-                    <table id="board" class="table table-hover bg-light align-middle table-bordered">
-                        <thead>
-						<tr>
-							<th class="bg-primary" scope="col" style="width:10%;">번호</th>
-							<th class="bg-primary" scope="col" style="width:50%;">제목</th>
-							<th class="bg-primary" scope="col" style="width:30%;">작성일</th>
-							<th class="bg-primary" scope="col" style="width:10%;">작성자</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${boardVO.articles}" var="article">
-							<tr >
-								<th scope="row">${article.art_no}</th>
-								<td>${article.art_title}</td>
-								<td>${article.art_create_time}</td>
-								<td>${article.mem_id}</td>
-							</tr>
-
-						</c:forEach>
-					</tbody>
-                    </table>
-                    <div class="row">
-                        <div class="col">
-                           <div class="container d-flex justify-content-center">
-					<nav aria-label="Page navigation example">
-						<ul class="pagination">
-
-							<c:choose>
-								<c:when test="${boardVO.curPage ne 1 }">
-									<li class="page-item">
-										<a class="page-link" onclick="onClickBoardPaging(${boardVO.curPage-1})"	aria-label="Previous">
-											<span aria-hidden="true">&laquo;</span>
-										</a>
-									</li>
-								</c:when>
-								<c:otherwise>
-									<li class="page-item disabled" >
-										<a class="page-link" aria-label="Previous" aria-disabled="true"> 
-											<span aria-hidden="true">&laquo;</span>
-										</a>
-									</li>
-								</c:otherwise>
-							</c:choose>
-
-							<c:forEach var="pageNum" begin="${boardVO.startPage}" end="${boardVO.endPage}">
-								<c:choose>
-									<c:when test="${pageNum eq  boardVO.curPage}">
-										<li class="page-item active">
-											<a class="page-link" onclick="onClickBoardPaging(${pageNum})">${pageNum}</a>
-										</li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item">
-											<a class="page-link" onclick="onClickBoardPaging(${pageNum})">${pageNum}</a>
-										</li>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-							<c:choose>
-								<c:when	test="${boardVO.curPage ne boardVO.pageCnt && boardVO.pageCnt > 0}">
-									<li class="page-item">
-										<a class="page-link" onclick="onClickBoardPaging(${boardVO.curPage+1})" aria-label="Next">
-											<span aria-hidden="true">&raquo;</span>
-										</a>
-									</li>
-								</c:when>
-								<c:otherwise>
-									<li class="page-item disabled">
-										<a class="page-link" aria-label="Next" aria-disabled="true">
-											<span aria-hidden="true">&raquo;</span>
-										</a>
-									</li>
-								</c:otherwise>
-							</c:choose>
-							
-						</ul>
-					</nav>
 				</div>
-                        </div>
-                    </div>
-                </div>
+			</div>
+		</div>
 
-                <div class="view hide" id="comment">
-                    <table class="table table-hover bg-light align-middle table-bordered">
-                        <thead>
-                            <tr>
-                                <th class="bg-primary" scope="col">#</th>
-                                <th class="bg-primary" scope="col">First</th>
-                                <th class="bg-primary" scope="col">Last</th>
-                                <th class="bg-primary" scope="col">Handle</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">4</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">5</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">6</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">7</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">8</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">9</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">10</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="row">
-                        <div class="col">
-                            <div class="container d-flex justify-content-center">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
+
+
+		<div class="row">
+
+			<div class="col-lg">
+				<div id="viewController" class="btn-group" role="group"
+					style="width: 100%; background: white;">
+					<button type="button" id="btnArticle" data-launch-view="article"
+						class="btn btn-outline-dark <c:if test="${view eq 'article'}">active</c:if>" style="width: 100%;">내가
+						쓴글</button>
+					<button type="button" id="btnComment" data-launch-view="comment"
+						class="btn btn-outline-dark <c:if test="${view eq 'comment'}">active</c:if>" style="width: 100%;">내 댓글</button>
+				</div>
+			</div>
+		</div>
+
+
+		
+		
+		<div class="row">
+			<div class="col">
+				<!-- 게시글 목록  -->
+				
+				<div class="view <c:if test="${view ne 'article'}">hide</c:if>" id="article" >
+					<table id="board"
+						class="table table-hover bg-light align-middle table-bordered">
+						<thead>
+							<tr>
+								<th class="bg-primary" scope="col" style="width: 10%;">번호</th>
+								<th class="bg-primary" scope="col" style="width: 50%;">제목</th>
+								<th class="bg-primary" scope="col" style="width: 30%;">작성일</th>
+								<th class="bg-primary" scope="col" style="width: 10%;">작성자</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${boardVO.articles}" var="article">
+								<tr>
+									<th scope="row">${article.art_no}</th>
+									<td>${article.art_title}</td>
+									<td>${article.art_create_time}</td>
+									<td>${article.mem_id}</td>
+								</tr>
+
+							</c:forEach>
+						</tbody>
+					</table>
+					<div class="row">
+						<div class="col">
+							<div class="container d-flex justify-content-center">
+								<nav aria-label="Page navigation example">
+									<ul class="pagination">
+										<c:choose>
+											<c:when test="${boardVO.curPage ne 1 }">
+												<li class="page-item"><a class="page-link"
+													onclick="onClickBoardPaging(${boardVO.curPage-1})"
+													aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+												</a></li>
+											</c:when>
+											<c:otherwise>
+												<li class="page-item disabled"><a class="page-link"
+													aria-label="Previous" aria-disabled="true"> <span
+														aria-hidden="true">&laquo;</span>
+												</a></li>
+											</c:otherwise>
+										</c:choose>
+
+										<c:forEach var="pageNum" begin="${boardVO.startPage}"
+											end="${boardVO.endPage}">
+											<c:choose>
+												<c:when test="${pageNum eq  boardVO.curPage}">
+													<li class="page-item active"><a class="page-link"
+														onclick="onClickBoardPaging(${pageNum})">${pageNum}</a></li>
+												</c:when>
+												<c:otherwise>
+													<li class="page-item"><a class="page-link"
+														onclick="onClickBoardPaging(${pageNum})">${pageNum}</a></li>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+										<c:choose>
+											<c:when
+												test="${boardVO.curPage ne boardVO.pageCnt && boardVO.pageCnt > 0}">
+												<li class="page-item"><a class="page-link"
+													onclick="onClickBoardPaging(${boardVO.curPage+1})"
+													aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+												</a></li>
+											</c:when>
+											<c:otherwise>
+												<li class="page-item disabled"><a class="page-link"
+													aria-label="Next" aria-disabled="true"> <span
+														aria-hidden="true">&raquo;</span>
+												</a></li>
+											</c:otherwise>
+										</c:choose>
+
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="view <c:if test="${view ne 'comment'}">hide</c:if>" id="comment">
+					<table id="comment"
+						class="table table-hover bg-light align-middle table-bordered">
+						<thead>
+							<tr>
+								<th class="bg-primary" scope="col" style="width: 10%;">번호</th>
+								<th class="bg-primary" scope="col" style="width: 50%;">제목</th>
+								<th class="bg-primary" scope="col" style="width: 30%;">작성일</th>
+								<th class="bg-primary" scope="col" style="width: 10%;">작성자</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${commentsVO.comments}" var="comment">
+								<tr>
+									<th scope="row">${comment.art_no}</th>
+									<td>${comment.cmt_title}</td>
+									<td>${comment.cmt_create_time}</td>
+									<td>${comment.mem_id}</td>
+								</tr>
+
+							</c:forEach>
+						</tbody>
+					</table>
+					<div class="row">
+						<div class="col">
+							<div class="container d-flex justify-content-center">
+								<nav aria-label="Page navigation example">
+									<ul class="pagination">
+										<c:choose>
+											<c:when test="${commentsVO.curPage ne 1 }">
+												<li class="page-item"><a class="page-link"
+													onclick="onClickCommentPaging(${commentsVO.curPage-1})"
+													aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+												</a></li>
+											</c:when>
+											<c:otherwise>
+												<li class="page-item disabled"><a class="page-link"
+													aria-label="Previous" aria-disabled="true"> <span
+														aria-hidden="true">&laquo;</span>
+												</a></li>
+											</c:otherwise>
+										</c:choose>
+
+										<c:forEach var="pageNum" begin="${commentsVO.startPage}"
+											end="${commentsVO.endPage}">
+											<c:choose>
+												<c:when test="${pageNum eq  commentsVO.curPage}">
+													<li class="page-item active"><a class="page-link"
+														onclick="onClickCommentPaging(${pageNum})">${pageNum}</a></li>
+												</c:when>
+												<c:otherwise>
+													<li class="page-item"><a class="page-link"
+														onclick="onClickCommentPaging(${pageNum})">${pageNum}</a></li>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+										<c:choose>
+											<c:when
+												test="${commentsVO.curPage ne commentsVO.pageCnt && commentsVO.pageCnt > 0}">
+												<li class="page-item"><a class="page-link"
+													onclick="onClickCommentPaging(${commentsVO.curPage+1})"
+													aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+												</a></li>
+											</c:when>
+											<c:otherwise>
+												<li class="page-item disabled"><a class="page-link"
+													aria-label="Next" aria-disabled="true"> <span
+														aria-hidden="true">&raquo;</span>
+												</a></li>
+											</c:otherwise>
+										</c:choose>
+
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
     var params; 
         //이미지 업로드 AJAX
         // 이미지 업로드가 session["mem_id"]에 종속됨 없으면 업로드 불가
@@ -318,11 +315,11 @@
         });
 
         $(document).ready(function(e) {
-
             function showView(viewName) {
                 $('.view').hide();
                 $('#' + viewName).show();
             }
+            
 
             $('[data-launch-view]').click(function(e) {
                 e.preventDefault();
@@ -331,8 +328,17 @@
 
                 showView(viewName);
             });
+            
+            
+                     
+            
+            
+            
+
 
         });
+
+        
 
 
         // 버튼 클릭에 따라 prameter의 값을 바꿈
@@ -472,6 +478,9 @@
             params.setCmtpage(no);
             window.location.href = setParameters();
         }
+        
+
+	
 		
 		</script>
 

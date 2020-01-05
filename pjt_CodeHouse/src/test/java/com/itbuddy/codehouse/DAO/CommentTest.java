@@ -60,7 +60,7 @@ public class CommentTest {
 
         Comment input = new Comment();
         
-        
+        input.setArt_no(13);
         input.setCmt_title("테스트");
         input.setCmt_content("테스트"); 
         input.setCmt_create_time(TimeLib.getCurrDateTime());

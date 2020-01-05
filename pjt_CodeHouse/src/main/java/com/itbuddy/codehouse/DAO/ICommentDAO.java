@@ -1,5 +1,6 @@
 package com.itbuddy.codehouse.DAO;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -13,10 +14,10 @@ public interface ICommentDAO {
 
     public List<Comment> select(Comment comment);
     
-    public List<Comment> select_start_count_sortParm(
-    		@Param("start") int start,
-			@Param("count") int count,
-			@Nullable @Param("sortParam") String sortParam);
+    public List<Comment> select_start_count_sortParm(HashMap<String,String> hashmap);
+    
+    
+    public int selectCommentsCount(HashMap<String, String> hashmap);
 
     
     public int insert(Comment comment);

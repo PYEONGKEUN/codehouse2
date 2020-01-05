@@ -29,14 +29,13 @@ public class SignUpController {
 	@Autowired
 	private IMemberService memberService;
 	
-	@RequestMapping(value = "/mypage", method = RequestMethod.POST)
+	@RequestMapping(value = "/signup")
 	public String signUp(Locale locale, Model model, HttpSession session, HttpServletRequest httpServletRequest) {
 		logger.info("Welcome board", locale);
 		
 		
 		
-		if(memberService.isLogin(session)) {
-			
+		if(memberService.isLogin(session)) {			
 			
 			return "redirect:./";
 		}else {
