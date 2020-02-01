@@ -2,7 +2,6 @@ package com.itbuddy.codehouse.service;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.UUID;
@@ -11,12 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.itbuddy.codehouse.DTO.Art_file;
-@Service
 
+@Service
 public class UploadService implements IUploadService{
 
 	private static final String SAVE_PATH = "/upload";

@@ -2,13 +2,12 @@ package com.itbuddy.codehouse.Service;
 
 import com.itbuddy.codehouse.DTO.Article;
 import com.itbuddy.codehouse.DTO.Comment;
-import com.itbuddy.codehouse.VO.BoardVO;
 import com.itbuddy.codehouse.VO.CommentsVO;
 import com.itbuddy.codehouse.config.RootConfig;
 import com.itbuddy.codehouse.service.IBoardService;
 import com.itbuddy.codehouse.service.ICommentService;
-import com.itbuddy.codehouse.util.CheckString;
 
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,16 +29,19 @@ public class CommentServiceTest {
     @Autowired
     private ICommentService commentService;
     
-//    @Test
-//    public void loginTest(){
-//    	List<Article> articles = boardService.getArticles( 0, 10,"art_create_time");
-//
-//    	for(Article article : articles) {
-//    		LOGGER.info(article.toString());
-//    	}
-//        
-//
-//    }
+    @Autowired
+    private IBoardService boardService;
+    
+    @Test
+    public void loginTest(){
+    	List<Article> articles = boardService.getArticles( 0, 10,"art_create_time");
+
+    	for(Article article : articles) {
+    		LOGGER.info(article.toString());
+    	}
+        
+
+    }
     @Test
     public void paginationTest(){
     	int commentTotalCnt = commentService.getCommentsCount(null,null);

@@ -1,6 +1,6 @@
 package com.itbuddy.codehouse.config;
 
-import javax.servlet.ServletContext;
+
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -14,8 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.multipart.MultipartResolver;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+
 
 @Configuration
 @ComponentScan(basePackages = { "com.itbuddy.codehouse.service" })

@@ -67,7 +67,6 @@ public class MemberService implements IMemberService{
 	@Override
 	public boolean isLogin(HttpSession session) {
 		// TODO Auto-generated method stub
-		boolean result = false;
 		// 세션에 멤버 정보가 있다면 로그인 상태
 		// 아니라면 로그아웃 상태
 		

@@ -2,7 +2,6 @@ package com.itbuddy.codehouse.service;
 
 import org.springframework.lang.Nullable;
 
-import com.itbuddy.codehouse.DTO.Article;
 import com.itbuddy.codehouse.DTO.Comment;
 import com.itbuddy.codehouse.VO.CommentsVO;
 

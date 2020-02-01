@@ -2,7 +2,6 @@ package com.itbuddy.codehouse.VO;
 
 import java.util.List;
 
-import com.itbuddy.codehouse.DTO.Article;
 import com.itbuddy.codehouse.DTO.Comment;
 
 public class CommentsVO {

@@ -1,9 +1,9 @@
 package com.itbuddy.codehouse.controller;
 
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
-import java.util.List;
+
+
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
-import com.itbuddy.codehouse.DTO.Article;
 import com.itbuddy.codehouse.VO.BoardVO;
 import com.itbuddy.codehouse.service.IBoardService;
 import com.itbuddy.codehouse.util.CheckString;

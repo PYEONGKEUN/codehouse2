@@ -31,8 +31,10 @@ public class ArticleService implements IArticleService {
 		
 		
 		if(result != null) {
+			LOGGER.info("article "+art_no+"is exist.");
 			return result;
 		}else {
+			LOGGER.info("article "+art_no+"is not found");
 			return null;
 		}
 	}

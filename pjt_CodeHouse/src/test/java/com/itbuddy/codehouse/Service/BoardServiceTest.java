@@ -31,28 +31,28 @@ public class BoardServiceTest {
 
     
 
-//    @Test
-//    public void paginationTest(){
-//    	int articleTotalCnt = boardService.getArticlesCount(null,null);
-//    	Article whereParam = new Article();
-//    	
-//    	whereParam.setMem_id("skvudrms54");
-//    	BoardVO boardVO = boardService.pagination(articleTotalCnt, Integer.parseInt("1"), "art_create_time",whereParam,null);
-//
-//    	for(Article article : boardVO.getArticles()) {
-//    		LOGGER.info(article.toString());
-//    	}
-//    	if(CheckString.isNumber("1a")) {
-//    		LOGGER.info("true");
-//    	}else {
-//    		LOGGER.info("false");
-//    	}
-//    	
-//    
-//    	
-//        
-//
-//    }
+    @Test
+    public void paginationTest(){
+    	int articleTotalCnt = boardService.getArticlesCount(null,null);
+    	Article whereParam = new Article();
+    	
+    	whereParam.setMem_id("skvudrms54");
+    	BoardVO boardVO = boardService.pagination(articleTotalCnt, Integer.parseInt("1"), "art_create_time",whereParam,null);
+
+    	for(Article article : boardVO.getArticles()) {
+    		LOGGER.info(article.toString());
+    	}
+    	if(CheckString.isNumber("1a")) {
+    		LOGGER.info("true");
+    	}else {
+    		LOGGER.info("false");
+    	}
+    	
+    
+    	
+        
+
+    }
     
     @Test
     public void fiboTest(){
