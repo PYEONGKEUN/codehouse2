@@ -76,14 +76,7 @@ public class RootConfig {
 		return new DataSourceTransactionManager(dataSource());
 	}
 	
-	@Bean
-	public CommonsMultipartResolver multipartResolver() {
-		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-		
-		resolver.setMaxInMemorySize(100000000);
-		resolver.setMaxUploadSize(100000000);
-		return resolver;
-		
-	}
+
+
 
 }	

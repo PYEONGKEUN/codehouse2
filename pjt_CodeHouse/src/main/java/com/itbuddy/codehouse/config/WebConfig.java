@@ -1,6 +1,8 @@
 package com.itbuddy.codehouse.config;
 
 import javax.servlet.Filter;
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration.Dynamic;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -8,6 +10,10 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer{
 
+	private static int MAX_FILE_ZIZE = 10 * 1024 * 1024;
+	
+	
+	
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class[] {RootConfig.class};
@@ -32,6 +38,12 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 		
 		return new Filter[] {filter};
 	}
+	
+	@Override
+	   protected void customizeRegistration(Dynamic registration) {
+	      MultipartConfigElement multipartConfig = new MultipartConfigElement("/tmp/upload", MAX_FILE_ZIZE, MAX_FILE_ZIZE, 0);
+	      registration.setMultipartConfig(multipartConfig);
+	   }
 
 	
 }
