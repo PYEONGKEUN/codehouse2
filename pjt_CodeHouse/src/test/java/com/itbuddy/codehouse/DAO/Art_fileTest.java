@@ -61,7 +61,7 @@ public class Art_fileTest {
 
         int num = art_fileDAO.insert(input);       
            
-        LOGGER.info("성공한 갯수 : " + num +" - "+input.toString());
+        LOGGER.info("성공?" + num +" - "+input.toString());
 
         List<Art_file> output = art_fileDAO.select(input);
 

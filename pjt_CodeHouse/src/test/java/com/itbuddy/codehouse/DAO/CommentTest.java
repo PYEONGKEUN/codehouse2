@@ -69,7 +69,7 @@ public class CommentTest {
 
         int num = commentDAO.insert(input);       
            
-        LOGGER.info("성공한 갯수 : " + num +" - "+input.toString());
+        LOGGER.info("성공한 ? : " + num +" - "+input.toString());
 
 
         

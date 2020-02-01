@@ -74,7 +74,7 @@ public class ArticleDaoTest {
 
         int num = articleDAO.insert(input);       
            
-        LOGGER.info("성공한 갯수 : " + num +" - "+input.toString());
+        LOGGER.info("성공?: " + num +" - "+input.toString());
 
 
         
