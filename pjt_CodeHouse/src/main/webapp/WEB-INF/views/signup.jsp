@@ -7,7 +7,7 @@
     <title>codeshare</title>
     <!--bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
     <!--summernote-->
@@ -106,36 +106,52 @@
 
 
     <script>
-        //이미지 업로드 AJAX
-        // 이미지 업로드가 session["mem_id"]에 종속됨 없으면 업로드 불가
-        function sendFile(file) {
-
-            var formData = new FormData();
-            formData.append('file', $('#inputImage')[0].files[0]);
-            $.ajax({
-                type: 'post',
-                url: 'memImageUploader.ashx',
-                data: formData,
-                success: function(status) {
-                    if (status != 'error') {
-                        var my_path = status;
-                        $("#userImage").attr("src", my_path);
-                    }
-                },
-                processData: false,
-                contentType: false,
-                error: function() {
-                    alert("Whoops something went wrong!");
+    //이미지 업로드 AJAX
+    // 이미지 업로드가 session["mem_id"]에 종속됨 없으면 업로드 불가
+    function sendFile(file) {
+		console.info("sendFile");
+        var formData = new FormData();
+        formData.append('mediaFile', $('#inputImage')[0].files[0]);
+        $.ajax({
+            type: 'post',
+            url: './uploadimg.action',
+            data: formData,
+            success: function(status) {
+                if (status != 'error') {
+                    var my_path = status;
+                    $("#userImage").attr("src", my_path);
                 }
-            });
+            },
+            processData: false,
+            contentType: false,
+            error: function() {
+                alert("Whoops something went wrong!");
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        $("#userImage").on("click", function() {
+            document.getElementById('inputImage').click();
+        });
+    });
+    
+    var _URL = window.URL || window.webkitURL;
+    $("#inputImage").on('change', function () {
+
+        var file, img;
+        if ((file = this.files[0])) {
+            img = new Image();
+            img.onload = function () {
+                sendFile(file);
+            };
+            img.onerror = function () {
+                alert("Not a valid file:" + file.type);
+            };
+            img.src = _URL.createObjectURL(file);
         }
 
-        $(document).ready(function() {
-            // test라는 클래스를가진 div를 클릭할 경우 "테스트입니다요."라는 alert가 뜬다.
-            $("#userImage").on("click", function() {
-                document.getElementById('inputImage').click();
-            });
-        });
+    });
 
     </script>
 

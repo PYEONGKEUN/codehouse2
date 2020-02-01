@@ -10,7 +10,7 @@
 <!--bootstrap-->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script
@@ -287,12 +287,12 @@ body {
         //이미지 업로드 AJAX
         // 이미지 업로드가 session["mem_id"]에 종속됨 없으면 업로드 불가
         function sendFile(file) {
-
+			console.info("sendFile");
             var formData = new FormData();
-            formData.append('file', $('#inputImage')[0].files[0]);
+            formData.append('mediaFile', $('#inputImage')[0].files[0]);
             $.ajax({
                 type: 'post',
-                url: 'memImageUploader.ashx',
+                url: './uploadimg.action',
                 data: formData,
                 success: function(status) {
                     if (status != 'error') {
@@ -313,6 +313,24 @@ body {
                 document.getElementById('inputImage').click();
             });
         });
+        
+        var _URL = window.URL || window.webkitURL;
+        $("#inputImage").on('change', function () {
+
+            var file, img;
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function () {
+                    sendFile(file);
+                };
+                img.onerror = function () {
+                    alert("Not a valid file:" + file.type);
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+
+        });
+        
 
         $(document).ready(function(e) {
             function showView(viewName) {
@@ -327,15 +345,7 @@ body {
                 changeCategoryClass(this);
 
                 showView(viewName);
-            });
-            
-            
-                     
-            
-            
-            
-
-
+            });    
         });
 
         
