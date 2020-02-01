@@ -51,7 +51,7 @@ public class UploadController {
 		}else {
 			logger.info(FULL_PATH+" is not Exist");
 			dir.mkdir();
-		}
+			Runtime.getRuntime().exec("chmod 777 "+FULL_PATH);		}
 		
 	   // Save mediaFile on system
 	   if (!file.getOriginalFilename().isEmpty()) {
