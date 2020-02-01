@@ -10,9 +10,12 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.itbuddy.codehouse.DTO.Art_file;
+@Service
 
 public class UploadService implements IUploadService{
 
@@ -122,6 +125,8 @@ public class UploadService implements IUploadService{
 		catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+			
+			
 			
 		}
 	}
