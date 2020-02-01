@@ -13,7 +13,7 @@
 		<org.springframework-version>5.0.7.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.7.5</org.slf4j-version>
-		<logback.version>1.1.1</logback.version>
+
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -60,11 +60,7 @@
 			<version>${org.slf4j-version}</version>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-                  <groupId>ch.qos.logback</groupId>
-                  <artifactId>logback-classic</artifactId>
-                  <version>${logback.version}</version>
-         </dependency>
+
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
