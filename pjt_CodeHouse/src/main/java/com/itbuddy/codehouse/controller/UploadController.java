@@ -42,9 +42,9 @@ public class UploadController {
 		logger.info("File uploaded loading.");
 		
 		
-		String DOWNLOAD_PATH = request.getServletContext().getRealPath(UPLOADS_PATH);
+		String REAL_PATH = request.getServletContext().getRealPath(UPLOADS_PATH);
 		String SINGLE_FILE_UPLOAD_PATH = "single";
-		String FULL_PATH = DOWNLOAD_PATH + "/" + SINGLE_FILE_UPLOAD_PATH;
+		String FULL_PATH = REAL_PATH + "/" + SINGLE_FILE_UPLOAD_PATH;
 		File dir = new File(FULL_PATH);
 		if(dir.isDirectory()) {
 			logger.info(FULL_PATH+" is Exist");
