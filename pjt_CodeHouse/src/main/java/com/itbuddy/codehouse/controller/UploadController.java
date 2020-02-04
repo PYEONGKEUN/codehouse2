@@ -50,12 +50,12 @@ public class UploadController {
 		
 		File dir = new File(REAL_PATH,SINGLE_FILE_UPLOAD_PATH);
 
-		if(dir.isDirectory()) {
+		if(dir.exists()) {
 			logger.info(dir.getPath()+" is Exist");
 		}else {
 
 			dir.mkdir();
-			//Runtime.getRuntime().exec("chmod 777 "+FULL_PATH);		
+			Runtime.getRuntime().exec("chown -R tomcat:tomcat "+dir.getPath());		
 			logger.info(dir.getPath()+" is not Exist so create dir");
 		}
 
