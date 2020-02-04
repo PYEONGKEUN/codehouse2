@@ -24,7 +24,7 @@ public class UploadController {
 	private static final Logger logger = LoggerFactory.getLogger(ArticleController.class);
 	
 // 컨트롤러에서 인식하는 PATH
-	private String UPLOADS_PATH ="/resources/uploads";
+	private String UPLOADS_PATH ="/files";
 	
 //	@ResponseBody
 //	@RequestMapping(value="/uploadimg.action", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
@@ -39,20 +39,25 @@ public class UploadController {
 	public String singleFileUpload(@RequestParam("mediaFile") MultipartFile file, 
 			Model model,
 			HttpServletRequest request) throws IOException {
+		
+		
 		logger.info("File uploaded loading.");
-		
-		
+		//ServletConfig 에 등록된 파일 경로
 		String REAL_PATH = request.getServletContext().getRealPath(UPLOADS_PATH);
-		String SINGLE_FILE_UPLOAD_PATH = "single";
+		String SINGLE_FILE_UPLOAD_PATH = "test";
 		String FULL_PATH = REAL_PATH + "/" + SINGLE_FILE_UPLOAD_PATH;
+		
 		File dir = new File(FULL_PATH);
+		
 		if(dir.isDirectory()) {
 			logger.info(FULL_PATH+" is Exist");
 		}else {
-			logger.info(FULL_PATH+" is not Exist");
+			
 			dir.mkdir();
-			Runtime.getRuntime().exec("chmod 777 "+FULL_PATH);		}
-		
+			Runtime.getRuntime().exec("chmod 777 "+FULL_PATH);		
+			logger.info(FULL_PATH+" is not Exist so create dir");
+		}
+			
 	   // Save mediaFile on system
 	   if (!file.getOriginalFilename().isEmpty()) {
 		   File saveFile = new File(FULL_PATH, file.getOriginalFilename());
