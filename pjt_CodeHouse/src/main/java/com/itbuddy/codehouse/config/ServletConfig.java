@@ -29,7 +29,7 @@ public class ServletConfig implements WebMvcConfigurer {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		//mapping="/resources/**" locations=/resources/
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-		registry.addResourceHandler("/files/**").addResourceLocations("file:/opt/codehouse_uploads/");
+		registry.addResourceHandler("/files/**").addResourceLocations("file:///opt/codehouse_uploads/");
 	}
 
 	   @Bean
