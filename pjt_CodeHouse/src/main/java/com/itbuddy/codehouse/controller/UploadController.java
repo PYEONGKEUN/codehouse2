@@ -44,6 +44,7 @@ public class UploadController {
 		logger.info("File uploaded loading.");
 		//ServletConfig 에 등록된 파일 경로
 		String REAL_PATH = request.getServletContext().getRealPath(UPLOADS_PATH);
+		logger.info("REAL_PATH : " + REAL_PATH);
 		String SINGLE_FILE_UPLOAD_PATH = "test";
 		String FULL_PATH = REAL_PATH + "/" + SINGLE_FILE_UPLOAD_PATH;
 		
@@ -54,7 +55,7 @@ public class UploadController {
 		}else {
 			
 			dir.mkdir();
-			Runtime.getRuntime().exec("chmod 777 "+FULL_PATH);		
+			//Runtime.getRuntime().exec("chmod 777 "+FULL_PATH);		
 			logger.info(FULL_PATH+" is not Exist so create dir");
 		}
 			
@@ -65,7 +66,10 @@ public class UploadController {
 	      model.addAttribute("msg", "File uploaded successfully.");
 	      
 	      logger.info("File uploaded successfully.");
-	      return UPLOADS_PATH+"/"+file.getOriginalFilename();
+	      
+	      String hostAndPort = request.getRequestURL().toString().replace(request.getRequestURI(),"");
+	      logger.info(hostAndPort+UPLOADS_PATH+"/"+file.getOriginalFilename());
+	      return hostAndPort+UPLOADS_PATH+"/"+file.getOriginalFilename();
 	   } else {
 	      model.addAttribute("msg", "Please select a valid mediaFile..");
 	      logger.info("Please select a valid mediaFile..");
