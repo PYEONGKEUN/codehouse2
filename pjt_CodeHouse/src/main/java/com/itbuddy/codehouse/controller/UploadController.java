@@ -24,7 +24,7 @@ public class UploadController {
 	private static final Logger logger = LoggerFactory.getLogger(ArticleController.class);
 	
 // 컨트롤러에서 인식하는 PATH
-	private String UPLOADS_PATH ="/files";
+	private String UPLOADS_PATH ="/uploads";
 	
 //	@ResponseBody
 //	@RequestMapping(value="/uploadimg.action", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
