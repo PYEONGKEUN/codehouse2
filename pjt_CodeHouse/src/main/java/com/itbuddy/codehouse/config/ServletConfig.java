@@ -1,7 +1,9 @@
 package com.itbuddy.codehouse.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -13,8 +15,14 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.itbuddy.codehouse.controller" })
-
+@PropertySource({"classpath:application.properties"})
 public class ServletConfig implements WebMvcConfigurer {
+	@Value("${uploads.location}")
+    private String uploadsLocation;
+    @Value("${uploads.uri_path}")
+    private String uploadsUriPath;
+	
+	
 	private final int MAX_SIZE = 10 * 1024 * 1024;
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -29,7 +37,7 @@ public class ServletConfig implements WebMvcConfigurer {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		//mapping="/resources/**" locations=/resources/
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-		registry.addResourceHandler("/uploads/**").addResourceLocations("file:///opt/codehouse/uploads");
+		registry.addResourceHandler(uploadsUriPath+"/**").addResourceLocations("file://"+uploadsLocation);
 	}
 
 	   @Bean
