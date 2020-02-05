@@ -38,6 +38,7 @@ public class ServletConfig implements WebMvcConfigurer {
 		//mapping="/resources/**" locations=/resources/
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 		registry.addResourceHandler(uploadsUriPath+"/**").addResourceLocations("file://"+uploadsLocation);
+		
 	}
 
 	   @Bean
