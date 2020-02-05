@@ -71,9 +71,10 @@ public class UploadController {
 			model.addAttribute("msg", "File uploaded successfully.");
 
 			logger.info("File uploaded successfully.");
-			//itbuddy.iptime.org/codehouse
-			String hostAndPort = request.getRequestURL().toString().replace(request.getRequestURI(),"")+"/codehouse";
+			//hostAndPort = itbuddy.iptime.org/codehouse/SINGLE_FILE_UPLOAD_PATH
+			String hostAndPort = request.getRequestURL().toString().replace(request.getRequestURI(),"")+"/codehouse/"+SINGLE_FILE_UPLOAD_PATH;
 			logger.info(hostAndPort+uploadsUriPath+"/"+file.getOriginalFilename());
+			
 			return hostAndPort+uploadsUriPath+"/"+file.getOriginalFilename();
 		} else {
 			model.addAttribute("msg", "Please select a valid mediaFile..");
