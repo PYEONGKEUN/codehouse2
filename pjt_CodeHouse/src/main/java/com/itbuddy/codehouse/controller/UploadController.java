@@ -74,8 +74,9 @@ public class UploadController {
 			logger.info("File uploaded successfully.");
 			
 			//hostAndPort = itbuddy.iptime.org/codehouse/SINGLE_FILE_UPLOAD_PATH
-			String host = request.getRequestURL().toString().replace(request.getRequestURI(),"")+"/codehouse/";
-			String fileURL = host + "/codehouse/uploads"+SINGLE_FILE_UPLOAD_PATH+file.getOriginalFilename();
+			//http://itbuddy.iptime.org/codehouse//codehouse/uploadstestInkspaceFile.jpeg
+			String host = request.getRequestURL().toString().replace(request.getRequestURI(),"");
+			String fileURL = host + "/codehouse/uploads/"+SINGLE_FILE_UPLOAD_PATH+"/"+file.getOriginalFilename();
 			logger.info("return : "+fileURL);
 			
 			return fileURL;
