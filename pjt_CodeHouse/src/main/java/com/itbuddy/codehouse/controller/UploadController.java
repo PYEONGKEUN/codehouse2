@@ -47,8 +47,9 @@ public class UploadController {
 
 
 		logger.info("File uploaded loading.");
-		//ServletConfig 에 등록된 파일 경로
 		
+		
+		//REAL_PATH : /opt/codehouse/uploads
 		logger.info("REAL_PATH : " + uploadsLocation);
 		String SINGLE_FILE_UPLOAD_PATH = "test";
 		
@@ -71,11 +72,13 @@ public class UploadController {
 			model.addAttribute("msg", "File uploaded successfully.");
 
 			logger.info("File uploaded successfully.");
-			//hostAndPort = itbuddy.iptime.org/codehouse/SINGLE_FILE_UPLOAD_PATH
-			String hostAndPort = request.getRequestURL().toString().replace(request.getRequestURI(),"")+"/codehouse/"+SINGLE_FILE_UPLOAD_PATH;
-			logger.info(hostAndPort+uploadsUriPath+"/"+file.getOriginalFilename());
 			
-			return hostAndPort+uploadsUriPath+"/"+file.getOriginalFilename();
+			//hostAndPort = itbuddy.iptime.org/codehouse/SINGLE_FILE_UPLOAD_PATH
+			String host = request.getRequestURL().toString().replace(request.getRequestURI(),"")+"/codehouse/";
+			String fileURL = host + "/codehouse/uploads"+SINGLE_FILE_UPLOAD_PATH+file.getOriginalFilename();
+			logger.info("return : "+fileURL);
+			
+			return fileURL;
 		} else {
 			model.addAttribute("msg", "Please select a valid mediaFile..");
 			logger.info("Please select a valid mediaFile..");
