@@ -71,8 +71,8 @@ public class UploadController {
 			model.addAttribute("msg", "File uploaded successfully.");
 
 			logger.info("File uploaded successfully.");
-
-			String hostAndPort = request.getRequestURL().toString().replace(request.getRequestURI(),"");
+			//itbuddy.iptime.org/codehouse
+			String hostAndPort = request.getRequestURL().toString().replace(request.getRequestURI(),"")+"/codehouse";
 			logger.info(hostAndPort+uploadsUriPath+"/"+file.getOriginalFilename());
 			return hostAndPort+uploadsUriPath+"/"+file.getOriginalFilename();
 		} else {
