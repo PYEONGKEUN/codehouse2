@@ -1,9 +1,11 @@
-package com.itbuddy.codehouse.service;
+package com.itbuddy.codehouse.serviceImpl;
 
 import java.util.List;
 
 import com.itbuddy.codehouse.DAO.IMemberDAO;
 import com.itbuddy.codehouse.DTO.Member;
+import com.itbuddy.codehouse.service.IMemberService;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -20,7 +22,7 @@ public class MemberService implements IMemberService{
 
 	@Autowired
 	private IMemberDAO memberDAO;
-
+	//로그인 서비스
 	@Override
 	public boolean login(Member member, HttpSession session) {
 		// TODO Auto-generated method stub

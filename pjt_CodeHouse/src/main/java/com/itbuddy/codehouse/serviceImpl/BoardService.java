@@ -1,4 +1,4 @@
-package com.itbuddy.codehouse.service;
+package com.itbuddy.codehouse.serviceImpl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +14,7 @@ import com.itbuddy.codehouse.DAO.IArticleDAO;
 import com.itbuddy.codehouse.DTO.Article;
 import com.itbuddy.codehouse.VO.BoardVO;
 import com.itbuddy.codehouse.controller.BoardController;
+import com.itbuddy.codehouse.service.IBoardService;
 @Service
 public class BoardService implements IBoardService{
 
@@ -32,9 +33,6 @@ public class BoardService implements IBoardService{
 		hashmap.put("sortParam", sortParam);
 		hashmap.put("start", Integer.toString(start));
 		hashmap.put("count", Integer.toString(count));
-
-
-
 
 
 		articles = articleDAO.select_start_count_sortParm(hashmap);

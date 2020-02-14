@@ -2,8 +2,8 @@ package com.itbuddy.codehouse.DAO;
 
 
 import com.itbuddy.codehouse.DTO.Article;
-import com.itbuddy.codehouse.config.RootConfig;
 import com.itbuddy.codehouse.util.TimeLib;
+import com.itbuddy.codehouse.config.RootConfig;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

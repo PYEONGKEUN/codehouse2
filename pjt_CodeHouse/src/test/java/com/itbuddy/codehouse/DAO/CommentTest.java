@@ -3,8 +3,8 @@ package com.itbuddy.codehouse.DAO;
 import java.util.List;
 
 import com.itbuddy.codehouse.DTO.Comment;
-import com.itbuddy.codehouse.config.RootConfig;
 import com.itbuddy.codehouse.util.TimeLib;
+import com.itbuddy.codehouse.config.RootConfig;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

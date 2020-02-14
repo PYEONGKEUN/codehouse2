@@ -30,7 +30,7 @@ public class ArticleController {
 	private IMemberService memberService;
 	
 	@Autowired
-	private IArticleService articleService;
+	private IArticleService iArticleService;
 
 	
 	@RequestMapping(value = "/article", method =  {RequestMethod.POST, RequestMethod.GET})
@@ -42,7 +42,7 @@ public class ArticleController {
 		
 		if(art_no != null) {
 			if(CheckString.isNumber(art_no)) {
-				article = articleService.getArticle(Integer.parseInt(art_no));
+				article = iArticleService.getArticle(Integer.parseInt(art_no));
 				model.addAttribute("article",article);
 			}else {
 				return "redirect:./";
@@ -59,7 +59,7 @@ public class ArticleController {
 	
 	
 	@Autowired
-	private IArticleEditService articleEditService;
+	private IArticleEditService iArticleEditService;
 	
 	
 	
@@ -108,7 +108,7 @@ public class ArticleController {
 			article.setArt_modify_time(TimeLib.getCurrDateTime());
 			article.setMem_id(mem_id);	
 			
-			int art_no = articleEditService.insertArticle(article);
+			int art_no = iArticleEditService.insertArticle(article);
 
 			
 			return "redirect:./article?article="+art_no;

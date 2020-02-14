@@ -39,11 +39,5 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 		return new Filter[] {filter};
 	}
 	
-	@Override
-	   protected void customizeRegistration(Dynamic registration) {
-	      MultipartConfigElement multipartConfig = new MultipartConfigElement("/tmp/upload", MAX_FILE_ZIZE, MAX_FILE_ZIZE, 0);
-	      registration.setMultipartConfig(multipartConfig);
-	   }
 
-	
 }

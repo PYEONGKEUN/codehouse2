@@ -1,4 +1,4 @@
-package com.itbuddy.codehouse.service;
+package com.itbuddy.codehouse.serviceImpl;
 
 import java.util.HashMap;
 
@@ -12,6 +12,7 @@ import com.itbuddy.codehouse.DAO.ICommentDAO;
 import com.itbuddy.codehouse.DTO.Comment;
 import com.itbuddy.codehouse.VO.CommentsVO;
 import com.itbuddy.codehouse.controller.BoardController;
+import com.itbuddy.codehouse.service.ICommentService;
 @Service
 public class CommentsService implements ICommentService{
 

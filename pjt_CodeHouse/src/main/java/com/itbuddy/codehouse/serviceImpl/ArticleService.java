@@ -1,4 +1,4 @@
-package com.itbuddy.codehouse.service;
+package com.itbuddy.codehouse.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.itbuddy.codehouse.DAO.IArticleDAO;
 import com.itbuddy.codehouse.DTO.Article;
+import com.itbuddy.codehouse.service.IArticleService;
 @Service
 public class ArticleService implements IArticleService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ArticleService.class);

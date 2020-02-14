@@ -1,4 +1,4 @@
-package com.itbuddy.codehouse.service;
+package com.itbuddy.codehouse.serviceImpl;
 
 
 import org.slf4j.Logger;
@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.itbuddy.codehouse.DAO.IArticleDAO;
 import com.itbuddy.codehouse.DTO.Article;
+import com.itbuddy.codehouse.service.IArticleEditService;
+
 
 
 @Service

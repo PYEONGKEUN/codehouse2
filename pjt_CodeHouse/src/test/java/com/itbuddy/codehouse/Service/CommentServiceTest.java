@@ -3,9 +3,9 @@ package com.itbuddy.codehouse.Service;
 import com.itbuddy.codehouse.DTO.Article;
 import com.itbuddy.codehouse.DTO.Comment;
 import com.itbuddy.codehouse.VO.CommentsVO;
-import com.itbuddy.codehouse.config.RootConfig;
 import com.itbuddy.codehouse.service.IBoardService;
 import com.itbuddy.codehouse.service.ICommentService;
+import com.itbuddy.codehouse.config.RootConfig;
 
 import java.util.List;
 
