@@ -17,8 +17,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
 @Configuration
-@ComponentScan(basePackages = { "com.itbuddy.codehouse.service" })
-@ComponentScan(basePackages = {"com.itbuddy.codehouse.util"})
+@ComponentScan(basePackages = { "com.itbuddy.codehouse.service",
+		"com.itbuddy.codehouse.serviceImpl",
+		"com.itbuddy.codehouse.util"  })
 @MapperScan(basePackages = { "com.itbuddy.codehouse.DAO" })
 
 @EnableScheduling
