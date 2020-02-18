@@ -59,3 +59,4 @@ hs_err_pid*\
 /**/nbdist/
 /**/.nb-gradle/
 pjt_CodeHouse/src/main/java/com/itbuddy/codehouse/config/DBConfig.java
+pjt_CodeHouse/.sts4-cache

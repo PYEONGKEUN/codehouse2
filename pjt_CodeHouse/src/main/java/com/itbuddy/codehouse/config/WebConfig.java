@@ -1,17 +1,22 @@
 package com.itbuddy.codehouse.config;
 
-import javax.servlet.Filter;
-import javax.servlet.MultipartConfigElement;
-import javax.servlet.ServletRegistration.Dynamic;
+import java.io.IOException;
 
+import javax.servlet.Filter;
+
+
+import org.springframework.beans.factory.config.PropertiesFactoryBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 
-public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer{
 
-	private static int MAX_FILE_ZIZE = 10 * 1024 * 1024;
+public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer{
 	
+
 	
 	
 	@Override

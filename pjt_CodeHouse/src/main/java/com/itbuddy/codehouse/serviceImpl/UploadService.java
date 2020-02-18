@@ -1,31 +1,32 @@
 package com.itbuddy.codehouse.serviceImpl;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Calendar;
-import java.util.UUID;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.itbuddy.codehouse.controller.UploadController;
 import com.itbuddy.codehouse.service.IUploadService;
 
 
 @Service
+@PropertySource({"classpath:profiles/${spring.profiles.active}/application.properties"})
 public class UploadService implements IUploadService{
 
 	private static final Logger logger = LoggerFactory.getLogger(UploadService.class);
+
 
 	@Value("${uploads.location}")
 	private String uploadsLocation;
@@ -34,12 +35,11 @@ public class UploadService implements IUploadService{
 
 
 
-
-
 	@Override
-	public String imgUpload(String email,			
+	public String imgUpload(		
 			MultipartFile file, 
 			Model model, 
+			HttpSession session,
 			HttpServletRequest request,
 			HttpServletResponse response) throws IOException{
 		// TODO Auto-generated method stub

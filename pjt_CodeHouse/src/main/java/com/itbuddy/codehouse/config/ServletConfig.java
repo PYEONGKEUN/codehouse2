@@ -1,6 +1,9 @@
 package com.itbuddy.codehouse.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
@@ -15,13 +18,15 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.itbuddy.codehouse.controller" })
-@PropertySource({"classpath:application.properties"})
+@PropertySource({"classpath:profiles/${spring.profiles.active}/application.properties"})
 public class ServletConfig implements WebMvcConfigurer {
 	@Value("${uploads.location}")
     private String uploadsLocation;
     @Value("${uploads.uri_path}")
     private String uploadsUriPath;
-	
+    
+    private static final Logger logger = LoggerFactory.getLogger(ServletConfig.class);
+    
 	
 	private final int MAX_SIZE = 10 * 1024 * 1024;
 	@Override
@@ -38,6 +43,7 @@ public class ServletConfig implements WebMvcConfigurer {
 		//mapping="/resources/**" locations=/resources/
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 		registry.addResourceHandler(uploadsUriPath+"/**").addResourceLocations("file://"+uploadsLocation);
+		logger.info(uploadsUriPath + " : "+ uploadsLocation);
 		
 	}
 
@@ -49,6 +55,10 @@ public class ServletConfig implements WebMvcConfigurer {
 	      multipartResolver.setMaxInMemorySize(0);
 	      return multipartResolver;
 	   }
+	   
+
+
+
 	
 
 	
