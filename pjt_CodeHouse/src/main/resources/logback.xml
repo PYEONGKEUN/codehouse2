@@ -19,12 +19,14 @@
  %% : % 표시를 출력하기 위해 사용한다.  
  %t : 로그이벤트가 발생된 쓰레드의 이름을 출력합니다
 -->
+
+
 <configuration scan="true" scanPeriod="30 seconds">
-    
+<property resource="profiles/${spring.profiles.active}/application.properties" />
     <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- rollover daily -->
-            <fileNamePattern>opt/codehouse/logs/logback-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <fileNamePattern>${logback.location}/logback-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <!-- or whenever the file size reaches 100MB -->
                 <maxFileSize>100MB</maxFileSize>

@@ -25,7 +25,6 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 public class UploadController {
 
-	private static final Logger logger = LoggerFactory.getLogger(UploadController.class);
 
 	@Autowired
 	IUploadService uploadService;
