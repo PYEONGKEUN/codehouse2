@@ -57,6 +57,7 @@ public class TopNavServiceTest {
         session.clearAttributes();
         session = null;
     }
+    @Test
     public void loginTest(){
     	
 
