@@ -26,7 +26,7 @@ public class TopNavServiceTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(TopNavServiceTest.class);
 
     @Autowired
-    private IMemberService TopNavService;
+    private IMemberService MemberService;
     private MockHttpSession session;
     protected MockHttpServletRequest request;
     
@@ -36,9 +36,11 @@ public class TopNavServiceTest {
         
         input.setMem_id("billip");
         input.setMem_pw("1234");
-        session = new MockHttpSession();
-        boolean login = TopNavService.login(input, session);
         
+        session = new MockHttpSession();
+        boolean login = MemberService.login(input, session);
+        
+        request = new MockHttpServletRequest();
         request.setSession(session);
         
         if(login){
@@ -57,11 +59,12 @@ public class TopNavServiceTest {
         session.clearAttributes();
         session = null;
     }
+    
     @Test
     public void loginTest(){
     	
 
-    	boolean islogin = TopNavService.isLogin(session);
+    	boolean islogin = MemberService.isLogin(session);
     	
         if(islogin){
             LOGGER.info("로그인 중");
