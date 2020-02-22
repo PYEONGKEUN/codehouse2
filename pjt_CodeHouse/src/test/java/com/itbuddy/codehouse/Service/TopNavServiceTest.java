@@ -27,17 +27,17 @@ public class TopNavServiceTest {
     
     @Test
     public void loginTest(){
-//        Member input = new Member();
-//        HttpSession session = new HttpSession();
-//        input.setMem_id("billip");
-//        input.setMem_pw("1234");
-//        boolean login = TopNavService.login(input, session);
-//
-//        if(login){
-//            LOGGER.info("로그인 완료");
-//        }else{
-//            LOGGER.info("로그인 실패");
-//        }
+        Member input = new Member();
+        HttpSession session = new HttpSession();
+        input.setMem_id("billip");
+        input.setMem_pw("1234");
+        boolean login = TopNavService.login(input, session);
+
+        if(login){
+            LOGGER.info("로그인 완료");
+        }else{
+            LOGGER.info("로그인 실패");
+        }
 
 
         
