@@ -14,8 +14,8 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.7.5</org.slf4j-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<skipTests>false</skipTests>
-		<cobertura.skip>false</cobertura.skip>
+		<skipTests>true</skipTests>
+		<cobertura.skip>true</cobertura.skip>
 
 	</properties>
 	<dependencies>
