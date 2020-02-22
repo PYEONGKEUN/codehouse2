@@ -85,16 +85,50 @@
 
     </div>
 
-    <script>
-        $(document).ready(function() {
-            $('#summernote').summernote({
-                placeholder: '내용을 입력하세요.',
-                tabsize: 2,
-                height: 450
-            });
+	<script>
+		/* TextArea Summernote */
 
-        });
-    </script>
+		$(document).ready(function() {
+			$('#summernote').summernote({
+				placeholder : '내용을 입력하세요.',
+				tabsize : 2,
+				height : 450,
+				callbacks : {
+					onImageUpload : function(files, editor, welEditable) {
+						for (var i = files.length - 1; i >= 0; i--) {
+							sendFileInSummernote(files[i], this);
+						}
+					}
+				}
+			});
+		});
+
+		function sendFileInSummernote(file, el) {
+			var form_data = new FormData();
+			form_data.append('file', file);
+			$
+					.ajax({
+						data : form_data,
+						type : "post",
+						url: './uploadimg.action',
+						enctype : 'multipart/form-data',
+						success : function(status) {
+							if (status != 'error') {
+								var url = status;
+								$(el).summernote('editor.insertImage', url);
+								$('#imageBoard > ul').append('<li><img src="' + url + '" width="480" height="auto"/></li>');
+							}
+						},
+						processData : false,
+						contentType : false,
+						 // 아래 error 함수를 이용해 콘솔창으로 디버깅을 한다.
+			            error: function(jqXHR, textStatus, errorThrown) { 
+			                console.log(jqXHR.responseText); 
+			            }
+					});
+
+		}
+	</script>
 
 </body>
 

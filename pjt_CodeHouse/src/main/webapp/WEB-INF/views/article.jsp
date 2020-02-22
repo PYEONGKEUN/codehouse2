@@ -119,28 +119,51 @@
     </div>
 
     <script>
-        $(document).ready(function() {
+    /* TextArea Summernote */
 
-            var hintArr = ['해시태그', 'sam', 'alvin', 'david'];
-            $('#summernote').summernote({
-                placeholder: '내용을 입력하세요.',
-                tabsize: 2,
-                height: 100,
-                hint: {
-                    mentions: hintArr,
-                    match: /\B#(\w*)$/,
-                    search: function(keyword, callback) {
-                        callback($.grep(this.mentions, function(item) {
-                            return item.indexOf(keyword) == 0;
-                        }));
-                    },
-                    content: function(item) {
-                        return '#' + item;
+    
+
+    $(document).ready(function () {
+        $('#summernote').summernote({
+            placeholder: '내용을 입력하세요.',
+            tabsize: 2,
+            height: 450,
+            callbacks: {
+                onImageUpload: function (files, editor, welEditable) {
+                    for (var i = files.length - 1; i >= 0; i--) {
+                        sendFileInSummernote(files[i], this);
                     }
                 }
-            });
-
+            }
         });
+    });
+
+    function sendFileInSummernote(file, el) {
+        var form_data = new FormData();
+        form_data.append('file', file);
+        $.ajax({
+            data: form_data,
+            type: "post",
+            url: './uploadimg.action',
+            enctype: 'multipart/form-data',
+            success: function (url) {
+                $(el).summernote('editor.insertImage', url);
+                $('#imageBoard > ul').append('<li><img src="' + url + '" width="480" height="auto"/></li>');
+            },
+            processData: false,
+            contentType: false,
+            // 아래 error 함수를 이용해 콘솔창으로 디버깅을 한다.
+            error: function(jqXHR, textStatus, errorThrown) { 
+                console.log(jqXHR.responseText); 
+            }
+        });
+
+
+    }
+        
+
+
+
     </script>
 
 

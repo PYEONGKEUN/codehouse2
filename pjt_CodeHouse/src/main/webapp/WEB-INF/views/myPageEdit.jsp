@@ -15,7 +15,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
 
 
-
     <style>
         html {
             height: 100%;
@@ -123,8 +122,9 @@
                 },
                 processData: false,
                 contentType: false,
-                error: function() {
-                    alert("Whoops something went wrong!");
+                // 아래 error 함수를 이용해 콘솔창으로 디버깅을 한다.
+                error: function(jqXHR, textStatus, errorThrown) { 
+                    console.log(jqXHR.responseText); 
                 }
             });
         }

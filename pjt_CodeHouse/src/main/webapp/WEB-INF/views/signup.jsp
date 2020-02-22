@@ -124,8 +124,9 @@
             },
             processData: false,
             contentType: false,
-            error: function() {
-                alert("Whoops something went wrong!");
+            // 아래 error 함수를 이용해 콘솔창으로 디버깅을 한다.
+            error: function(jqXHR, textStatus, errorThrown) { 
+                console.log(jqXHR.responseText); 
             }
         });
     }

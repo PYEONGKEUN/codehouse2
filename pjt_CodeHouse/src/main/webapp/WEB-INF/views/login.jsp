@@ -66,8 +66,7 @@
               <hr class="my-4">
               <br/>
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
-              <button class="btn btn-lg btn-warning btn-block text-uppercase" type="button" href="./signup">Sign up</button>                 
-              
+              <button class="btn btn-lg btn-warning btn-block text-uppercase" type="button" href="./signup">Sign up</button>                   
             </form>
           </div>
         </div>
