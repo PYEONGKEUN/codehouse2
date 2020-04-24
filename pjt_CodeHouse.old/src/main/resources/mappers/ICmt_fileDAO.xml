@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itbuddy.codehouse.DAO.ICmt_fileDAO">
+  <select id="select" resultType="com.itbuddy.codehouse.DTO.Cmt_file" >
+    SELECT *
+    FROM cmt_file
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <if test="cmt_fil_no != null">AND cmt_fil_no=#{cmt_fil_no}</if>
+      <if test="cmt_fil_url != null">AND cmt_fil_url=#{cmt_fil_url}</if>
+      <if test="cmt_no != null">AND cmt_no=#{cmt_no}</if>
+    </trim>
+
+  </select>
+
+  <update id="update" parameterType="com.itbuddy.codehouse.DTO.Cmt_file">
+    UPDATE cmt_file
+    <trim prefix="SET" suffixOverrides=",">
+      <if test="cmt_fil_url != null">cmt_fil_url=#{cmt_fil_url},</if>
+      <if test="cmt_no != null">cmt_no=#{cmt_no},</if>
+    </trim>
+    WHERE cmt_fil_no=#{cmt_fil_no}
+  </update>
+
+  <insert id="insert" useGeneratedKeys="true" keyProperty="cmt_fil_no" parameterType="com.itbuddy.codehouse.DTO.Cmt_file">
+    INSERT INTO cmt_file(cmt_fil_url, cmt_no)
+    values(#{cmt_fil_url},#{cmt_no})
+  </insert>
+
+</mapper>
