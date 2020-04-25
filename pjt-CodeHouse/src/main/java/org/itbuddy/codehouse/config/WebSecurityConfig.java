@@ -17,6 +17,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 @EnableWebSecurity
 public class WebSecurityConfig  extends WebSecurityConfigurerAdapter{
@@ -29,6 +30,13 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter{
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+    	CharacterEncodingFilter filter = new CharacterEncodingFilter();
+    	
+    	filter.setEncoding("UTF-8");
+    	filter.setForceEncoding(true);
+    	
+    	
+    	
         //웹 페이지 접근 권한 설정
         
 
@@ -48,7 +56,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter{
 		.logoutUrl("/logout.action")
 		.invalidateHttpSession(true);
 
-        
+
         
     }
 

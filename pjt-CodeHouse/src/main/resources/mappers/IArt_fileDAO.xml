@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.itbuddy.codehouse.DAO.IArt_fileDAO">
-  <select id="select" resultType="com.itbuddy.codehouse.DTO.Art_file">
+<mapper namespace="org.itbuddy.codehouse.DAO.IArt_fileDAO">
+  <select id="select" resultType="org.itbuddy.codehouse.DTO.Art_file">
     SELECT *
     FROM art_file
     <trim prefix="WHERE" prefixOverrides="AND|OR">
@@ -12,7 +12,7 @@
 
   </select>
 
-  <update id="update" parameterType="com.itbuddy.codehouse.DTO.Art_file">
+  <update id="update" parameterType="org.itbuddy.codehouse.DTO.Art_file">
     UPDATE art_file
     <trim prefix="SET" suffixOverrides=",">
       <if test="art_fil_url != null">art_fil_url=#{art_fil_url},</if>
@@ -22,7 +22,7 @@
     WHERE art_fil_no=#{art_fil_no}
   </update>
 
-  <insert id="insert" useGeneratedKeys="true" keyProperty="art_fil_no" parameterType="com.itbuddy.codehouse.DTO.Art_file">
+  <insert id="insert" useGeneratedKeys="true" keyProperty="art_fil_no" parameterType="org.itbuddy.codehouse.DTO.Art_file">
     INSERT INTO art_file(art_fil_url, art_no)
     values(#{art_fil_url},#{art_no})
   </insert>

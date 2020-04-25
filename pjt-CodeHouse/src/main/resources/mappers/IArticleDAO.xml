@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.itbuddy.codehouse.DAO.IArticleDAO">
-	<select id="select" resultType="com.itbuddy.codehouse.DTO.Article">
+<mapper namespace="org.itbuddy.codehouse.DAO.IArticleDAO">
+	<select id="select" resultType="org.itbuddy.codehouse.DTO.Article">
 		SELECT *
 		FROM article
 		<trim prefix="WHERE" prefixOverrides="AND|OR">
@@ -22,7 +22,7 @@
 		사용자 입력은 #하는것이 좋다.
 		
 		$는 보안에 불리 -> 쿼리 주입 공격이 가능 테이블병, 컬럼명을 전달할때 사용-->
-	<select id="select_start_count_sortParm" parameterType="java.util.HashMap" resultType="com.itbuddy.codehouse.DTO.Article">
+	<select id="select_start_count_sortParm" parameterType="java.util.HashMap" resultType="org.itbuddy.codehouse.DTO.Article">
 		SELECT *
 		FROM article
 		<trim prefix="WHERE" prefixOverrides="AND|OR">
@@ -52,7 +52,7 @@
 		</trim>
 	</select>
 
-	<update id="update" parameterType="com.itbuddy.codehouse.DTO.Article">
+	<update id="update" parameterType="org.itbuddy.codehouse.DTO.Article">
 		UPDATE article
 		<trim prefix="SET" suffixOverrides=",">
 			<if test="art_title != null">cmt_content=#{cmt_content},</if>
@@ -64,7 +64,7 @@
 		WHERE art_no=#{art_no}
 	</update>
 
-	<insert id="insert" useGeneratedKeys="true" keyProperty="art_no" parameterType="com.itbuddy.codehouse.DTO.Article">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="art_no" parameterType="org.itbuddy.codehouse.DTO.Article">
 		INSERT INTO article(art_title, art_content, art_create_time, art_modify_time, mem_id)
 		values(#{art_title},#{art_content},#{art_create_time},#{art_modify_time},#{mem_id})
 	</insert>

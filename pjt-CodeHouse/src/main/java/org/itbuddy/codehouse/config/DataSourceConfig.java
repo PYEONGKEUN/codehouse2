@@ -1,16 +1,6 @@
-
-
-
-
 package org.itbuddy.codehouse.config;
 
 
-
-
-
-import javax.sql.DataSource;
-
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.type.BooleanTypeHandler;
 import org.apache.ibatis.type.DateTypeHandler;
@@ -20,13 +10,11 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.zaxxer.hikari.HikariConfig;
@@ -60,6 +48,8 @@ public class DataSourceConfig{
 		config.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3306/codehouse");
         config.setUsername(username);
         config.setPassword(password);
+        config.setPoolName("springHikariCP");
+        config.setConnectionTestQuery("SELECT 1");
         config.setMinimumIdle(10);
         config.setMaximumPoolSize(40);
         config.setIdleTimeout(10000);
@@ -67,6 +57,7 @@ public class DataSourceConfig{
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+        config.addDataSourceProperty("useServerPrepStmts", "true");
         ds = new HikariDataSource(config);
 
         return ds;
@@ -76,7 +67,10 @@ public class DataSourceConfig{
 	public SqlSessionFactory sqlSessionFactory() throws Exception {
 		SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
 		sqlSessionFactory.setDataSource(dataSource());
-		 Resource[] res = new PathMatchingResourcePatternResolver().getResources("classpath:mappers/*DAO.xml");
+		Resource[] res = new PathMatchingResourcePatternResolver().getResources("classpath:mappers/*DAO.xml");
+		System.out.println("---+++");
+		System.out.println(res.toString());
+		
 		 sqlSessionFactory.setMapperLocations(res);
 		 sqlSessionFactory.setTypeAliasesPackage("org.itbuddy.codehouse.DTO");
 		 

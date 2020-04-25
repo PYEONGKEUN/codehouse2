@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.itbuddy.codehouse.DAO.ICommentDAO">
+<mapper namespace="org.itbuddy.codehouse.DAO.ICommentDAO">
 
-    <select id="select" resultType="com.itbuddy.codehouse.DTO.Comment">
+    <select id="select" resultType="org.itbuddy.codehouse.DTO.Comment">
         SELECT *
         FROM comment
         <trim prefix="WHERE" prefixOverrides="AND|OR">
@@ -23,7 +23,7 @@
 		사용자 입력은 #하는것이 좋다.
 		
 		$는 보안에 불리 -> 쿼리 주입 공격이 가능 테이블병, 컬럼명을 전달할때 사용-->
-	<select id="select_start_count_sortParm" parameterType="java.util.HashMap" resultType="com.itbuddy.codehouse.DTO.Comment">
+	<select id="select_start_count_sortParm" parameterType="java.util.HashMap" resultType="org.itbuddy.codehouse.DTO.Comment">
 		SELECT *
 		FROM comment
 		<trim prefix="WHERE" prefixOverrides="AND|OR">
@@ -55,7 +55,7 @@
 	</select>
     
 
-    <update id="update" parameterType="com.itbuddy.codehouse.DTO.Comment">
+    <update id="update" parameterType="org.itbuddy.codehouse.DTO.Comment">
         UPDATE comment
         <trim prefix="SET" suffixOverrides=",">
             <if test="cmt_title != null">cmt_title=#{cmt_title},</if>
